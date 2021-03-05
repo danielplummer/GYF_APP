@@ -1,4 +1,7 @@
 
+<!-- DB Connection -->
+<?php include "includes/db.php" ?>
+
 <!-- header -->
 <?php include "includes/header.php" ?>
 
@@ -12,7 +15,7 @@
     <div class="input-group my-4">
       <input type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-append">
-        <button class="btn btn-primary" type="button">Go!</button>
+        <button class="btn btn-primary search-btn" type="button">Go!</button>
       </span>
     </div>
 </div>

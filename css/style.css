@@ -15,3 +15,9 @@ h1, h2, h3, h4, h5{
 .header-logo{
 	max-width: 200px;
 }
+
+
+.search-btn{
+	width: 100px !important;
+	font-weight: bold;
+}
