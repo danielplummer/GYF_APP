@@ -24,6 +24,20 @@
 <!-- feature request cards -->
 <section>
     <div class="container">
+
+        <?php
+
+        $query = "SELECT * FROM posts";
+        $select_all_posts_query = mysqli_query($connection, $query);
+
+        while($row = mysqli_fetch_array($select_all_posts_query)){
+            $post_title = $row['post_title'];
+            $post_author = $row['post_author'];
+            $post_date = $row['post_date'];
+            $post_status_badge = $row['post_status_badge'];
+            $post_content = $row['post_content'];
+            $post_comment_count = $row['post_comment_count'];
+        ?>
         
         <!-- Card content -->
         <div class="card shadow-sm mb-4">
@@ -36,18 +50,26 @@
             </div>
             <div class="col-md-10">
               <div class="card-body bg-white">
-                <h5 class="card-title">Feature Request Title</h5>
+                <h5 class="card-title"><?php echo $post_title ?></h5>
                 <!-- descritpion -->
-                <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This text will cut off when it gets too long...</p>
+                <p class="card-text text-muted"><?php echo $post_content ?></p>
                 <a href="#" class="btn btn-primary btn-sm">Keep Reading <span aria-hidden="true">&raquo;</span></a>
                 <!-- info -->
                 
-                <p class="card-text pt-3"><a href="#"><small>17 Comments</small></a> | <small class="text-muted">Suggested on 3/5/21 by Dean P.</small> <span class="badge badge-warning float-right">Under Construction</span></p>
+                <p class="card-text pt-3">
+                    <a href="#"><small><?php echo $post_comment_count ?> Comments</small></a> | 
+                    <small class="text-muted">Suggested on <?php echo $post_date ?> by <?php echo $post_author ?>.</small> 
+                    <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
+                </p>
               </div>
             </div>
           </div>
         </div>
         <!-- /card content -->
+        <?php
+        }
+        ?>
+
 
     </div>
 </section>
