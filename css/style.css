@@ -1,0 +1,17 @@
+p, a{
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+}
+
+.bg-grey{
+	background-color: #ecf0f1 !important;
+}
+
+
+.header-logo{
+	max-width: 200px;
+}
