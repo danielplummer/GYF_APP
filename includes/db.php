@@ -19,5 +19,4 @@ if($connection){
 	echo "successfully connected to the database";
 }
 
-
 ?>
