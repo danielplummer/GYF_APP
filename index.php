@@ -12,14 +12,16 @@
 <div class="container text-center py-5">
     <h1 class="">Suggestions For Grow Young Fitness</h1>
     <!-- Search Bar -->
-    <form action="search.php" method="post">
-        <div class="input-group my-4">
-          <input type="text" name="search" class="form-control" placeholder="Search for...">
-          <span class="input-group-append">
-            <button class="btn btn-primary search-btn" name="submit" type="submit">Go!</button>
-          </span>
-        </div>
-    </form>
+    <div class="col-md-8 offset-md-2">
+        <form action="search.php" method="post">
+            <div class="input-group my-4">
+              <input type="text" name="search" class="form-control" placeholder="Search for...">
+              <span class="input-group-append">
+                <button class="btn btn-primary search-btn" name="submit" type="submit">Go!</button>
+              </span>
+            </div>
+        </form>
+    </div>
 </div>
 
 

@@ -26,6 +26,7 @@
 <!-- feature request cards -->
 <section>
     <div class="container">
+    <p class="lead">Search results:</p>
 
 
 
