@@ -8,8 +8,10 @@
 <!-- Main Admin Page Content -->
 <div class="container-fluid">
 	<h1 class="mt-4">All Posts</h1>
+	<a href="posts.php?source=add_post" class="btn btn-outline-primary add-post-btn my-4">Add Post +</a>
 
 	<?php
+	// Switch Statement that displays posts
 
 	if (isset($_GET['source'])) {
 		$source = $_GET['source'];
@@ -23,8 +25,8 @@
 		include "includes/add_post.php";
 		break;
 
-		case '100':
-		echo "Nice 100";
+		case 'edit_post':
+		include "includes/edit_post.php";
 		break;
 		
 		default:

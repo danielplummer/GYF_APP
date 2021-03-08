@@ -14,7 +14,7 @@
     
     <?php
 
-
+    // Deisplay all posts
     $query = "SELECT * FROM POSTS";
     $select_posts = mysqli_query($connection, $query);
 
@@ -35,6 +35,8 @@
 	     	echo "<td>$post_tags</td>";
 	     	echo "<td>$post_comment_count</td>";
 	     	echo "<td>$post_date</td>";
+        echo "<td class='text-center'><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
+        echo "<td class='text-center'><a href='posts.php?delete={$post_id}' class='text-danger'>Delete</a></td>";
      	echo "</tr>";
 
     }
@@ -42,3 +44,16 @@
   
   </tbody>
 </table>
+
+
+<?php
+// Delete post
+
+if(isset($_GET['delete'])){
+  $the_post_id = $_GET['delete'];
+
+  $query = "DELETE FROM posts WHERE post_id = {$the_post_id}";
+  $delete_query = mysqli_query($connection, $query);
+}
+
+?>
