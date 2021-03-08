@@ -7,7 +7,7 @@
       <div class="list-group list-group-flush">
         <a href="index.php" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="posts.php" class="list-group-item list-group-item-action bg-light">Posts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Comments</a>
+        <a href="comments.php" class="list-group-item list-group-item-action bg-light">Comments</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
