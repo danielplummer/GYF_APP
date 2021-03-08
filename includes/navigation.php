@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand pr-4" href="#">
+    <a class="navbar-brand pr-4" href="index.php">
       <img src="img/lg-logo-color.png" class="d-inline-block header-logo" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

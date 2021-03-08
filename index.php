@@ -35,11 +35,13 @@
         $select_all_posts_query = mysqli_query($connection, $query);
 
         while($row = mysqli_fetch_array($select_all_posts_query)){
+            $post_id = $row['post_id'];
             $post_title = $row['post_title'];
             $post_author = $row['post_author'];
             $post_date = $row['post_date'];
             $post_status_badge = $row['post_status_badge'];
-            $post_content = $row['post_content'];
+            // Limit content lenght on homepage
+            $post_content = substr($row['post_content'], 0,200);
             $post_comment_count = $row['post_comment_count'];
         ?>
         
@@ -57,7 +59,8 @@
                 <h5 class="card-title"><?php echo $post_title ?></h5>
                 <!-- descritpion -->
                 <p class="card-text text-muted"><?php echo $post_content ?></p>
-                <a href="#" class="btn btn-primary btn-sm">Keep Reading <span aria-hidden="true">&raquo;</span></a>
+                <!-- link to post -->
+                <a href="post.php?p_id=<?php echo $post_id; ?>" class="btn btn-primary btn-sm">Keep Reading <span aria-hidden="true">&raquo;</span></a>
                 <!-- info -->
                 
                 <p class="card-text pt-3">

@@ -15,24 +15,39 @@
       <!-- Post Content Column -->
       <div class="col-lg-8">
 
-        <!-- Title -->
-        <h1 class="mt-4">Post Title</h1>
+        <?php
 
-        <!-- Author -->
+        if (isset($_GET['p_id'])) {
+          $the_post_id = $_GET['p_id'];
+        }
+
+        $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
+        $select_all_posts_query = mysqli_query($connection, $query);
+
+        while($row = mysqli_fetch_array($select_all_posts_query)){
+            $post_title = $row['post_title'];
+            $post_author = $row['post_author'];
+            $post_date = $row['post_date'];
+            $post_status_badge = $row['post_status_badge'];
+            $post_content = $row['post_content'];
+            $post_comment_count = $row['post_comment_count'];
+
+        ?>
+
+        <!-- post title -->
+        <h1 class="mt-4"><?php echo $post_title ?></h1>
+        <!-- post author -->
         <p class="lead">
-          by: Post Author
+          by: <?php echo $post_author ?>
         </p>
         <!-- Date/Time -->
-        <p>Posted on January 1, 2019 at 12:00 PM</p>
+        <p>Posted on <?php echo $post_date ?></p>
 
         <hr>
 
 
         <!-- Post Content -->
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+        <p><?php echo $post_content ?></p>
 
         <hr>
 
@@ -84,6 +99,10 @@
           </div>
         </div>
 
+        <?php
+        // end loop
+        }
+      ?>
       </div>
 
       <!-- Sidebar Widgets Column -->
