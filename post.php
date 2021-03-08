@@ -49,18 +49,55 @@
         <!-- Post Content -->
         <p><?php echo $post_content ?></p>
 
-        <hr>
+
+        <?php
+        // Inset comment query
+        if(isset($_POST['create_comment'])){
+          $the_post_id = $_GET['p_id'];
+
+          $comment_author = $_POST['comment_author'];
+          $comment_email = $_POST['comment_email'];
+          $comment_content = $_POST['comment_content'];
+
+          $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
+
+          $query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now())";
+
+          $create_comment_query = mysqli_query($connection, $query);
+
+          if(!$create_comment_query){
+            die('query failed' . mysqli_error($connection));
+          }
+
+        }
+
+
+        ?>
+
 
         <!-- Comments Form -->
         <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+          <h5 class="card-header bg-light border-bottom-0">Leave a Comment:</h5>
+          <div class="card-body bg-light">
+            <form action="" method="post">
+
+              <div class="form-group w-50">
+                <input type="text" class="form-control" name="comment_author" placeholder="Name">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+
+              <div class="form-group w-50">
+                <input type="email" class="form-control" name="comment_email" placeholder="Email">
+                <p class="text-muted pl-2 pt-1"><small>We do not share your email.</small></p>
+              </div>
+
+              <div class="form-group">
+                <textarea class="form-control" name="comment_content" rows="3" placeholder="Leave a comment"></textarea>
+              </div>
+
+              <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
+
             </form>
+
           </div>
         </div>
 
@@ -88,13 +125,6 @@
               </div>
             </div>
 
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
 
           </div>
         </div>
