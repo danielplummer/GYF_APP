@@ -5,9 +5,9 @@
 <?php include "includes/navigation.php"?>
 
   	
-<!-- Main Page Content -->
+<!-- Main Admin Page Content -->
 <div class="container-fluid">
-	<h1 class="mt-4">GYF APP ADMIN</h1>
+	<h1 class="mt-4">Main Dashboard</h1>
 </div>
     
 <!-- Footer -->

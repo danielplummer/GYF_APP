@@ -9,6 +9,9 @@
             <a class="nav-link" href="#">Terms of Service</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="admin/">Admin</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#">Admin Login</a>
           </li>
         </ul>
