@@ -97,33 +97,51 @@
           </div>
         </div>
 
-        <!-- Single Comment -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-        </div>
 
-        <!-- Comment with nested comments -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        <?php
 
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
+        $query = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
+        $query .= "AND comment_status = 'approved' ";
+        $query .= "ORDER BY comment_id DESC ";
+        $select_comment_query = mysqli_query($connection,$query);
+
+        if(!$select_comment_query){
+          die("query failed" . mysqli_error($connection));
+        }
+
+        while ($row = mysqli_fetch_array($select_comment_query)) {
+          $comment_date = $row['comment_date'];
+          $comment_content = $row['comment_content'];
+          $comment_author = $row['comment_author'];
+
+          ?>
+
+
+          <!-- Single Comment -->
+          <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <!-- comment author / date -->
+              <h5 class="mt-0"><?php echo $comment_author ?> <small class="text-muted">on <?php echo $comment_date ?></small></h5>
+              <!-- comment content -->
+              <p>
+                <?php echo $comment_content ?>
+              </p>
+              <hr>
             </div>
-
-
           </div>
-        </div>
+
+
+
+
+        <?php
+        }
+
+        ?>
+
+
+
+      
 
         <?php
         // end loop
