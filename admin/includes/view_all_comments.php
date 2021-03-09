@@ -1,13 +1,36 @@
 <?php
-// Delete Comment - Must be at top of this file to work
-if(isset($_GET['delete'])){
-  $the_comment_id = $_GET['delete'];
+  // Must be at top of this file for header() to work
 
-  $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
-  $delete_query = mysqli_query($connection, $query);
-  // reload page after delete
-  header("Location: comments.php");
-}
+  // ========== Approve Comment
+  if(isset($_GET['approve'])){
+    $the_comment_id = $_GET['approve'];
+
+    $query = "UPDATE comments SET comment_status = 'approve' WHERE comment_id = $the_comment_id";
+    $approve_comment_query = mysqli_query($connection, $query);
+    // reload page after click
+    header("Location: comments.php");
+  }
+
+
+  // ========== Unapprove Comment
+  if(isset($_GET['unapprove'])){
+    $the_comment_id = $_GET['unapprove'];
+
+    $query = "UPDATE comments SET comment_status = 'unapprove' WHERE comment_id = $the_comment_id";
+    $unapprove_comment_query = mysqli_query($connection, $query);
+    // reload page after click
+    header("Location: comments.php");
+  }
+
+  // ========== Delete Comment
+  if(isset($_GET['delete'])){
+    $the_comment_id = $_GET['delete'];
+
+    $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
+    $delete_query = mysqli_query($connection, $query);
+    // reload page after delete
+    header("Location: comments.php");
+  }
 
 ?>
 
@@ -62,12 +85,19 @@ if(isset($_GET['delete'])){
         }
 
 	     	echo "<td>$comment_date</td>";
-        echo "<td class='text-center'><a href='posts.php?source=edit_post&p_id='>Approve</a></td>";
-        echo "<td class='text-center'><a href='posts.php?delete='>Unapprove</a></td>";
+        echo "<td class='text-center'><a href='comments.php?approve=$comment_id'>Approve</a></td>";
+        echo "<td class='text-center'><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
         echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
      	echo "</tr>";
 
     }
+    ?>
+
+
+    <?php
+
+    
+
     ?>
   
   </tbody>
