@@ -50,8 +50,7 @@
 	     	echo "<td>$comment_date</td>";
         echo "<td class='text-center'><a href='posts.php?source=edit_post&p_id='>Approve</a></td>";
         echo "<td class='text-center'><a href='posts.php?delete='>Unapprove</a></td>";
-        echo "<td class='text-center'><a href='posts.php?source=edit_post&p_id='>Edit</a></td>";
-        echo "<td class='text-center'><a href='posts.php?delete=' class='text-danger'>Delete</a></td>";
+        echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
      	echo "</tr>";
 
     }
@@ -62,13 +61,14 @@
 
 
 <?php
-// Delete post
-
+// Delete Comment
 if(isset($_GET['delete'])){
-  $the_post_id = $_GET['delete'];
+  $the_comment_id = $_GET['delete'];
 
-  $query = "DELETE FROM posts WHERE post_id = {$the_post_id}";
+  $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
   $delete_query = mysqli_query($connection, $query);
+  // reload page after delete - NOT WORKING
+  //header("Location: comments.php");
 }
 
 ?>

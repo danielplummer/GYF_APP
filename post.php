@@ -36,18 +36,14 @@
 
         <!-- post title -->
         <h1 class="mt-4"><?php echo $post_title ?></h1>
-        <!-- post author -->
-        <p class="lead">
-          by: <?php echo $post_author ?>
-        </p>
-        <!-- Date/Time -->
-        <p>Posted on <?php echo $post_date ?></p>
+        
+        <!-- post author/date -->
+        <p class="text-muted">Posted by: <?php echo $post_author ?> on <?php echo $post_date ?> </p>
 
         <hr>
 
-
         <!-- Post Content -->
-        <p><?php echo $post_content ?></p>
+        <p class="lead py-2"><?php echo $post_content ?></p>
 
 
         <?php
