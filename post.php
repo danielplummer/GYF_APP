@@ -16,7 +16,7 @@
       <div class="col-lg-8">
 
         <?php
-
+        
         if (isset($_GET['p_id'])) {
           $the_post_id = $_GET['p_id'];
         }
@@ -47,7 +47,7 @@
 
 
         <?php
-        // Inset comment query
+        // Insert comment query
         if(isset($_POST['create_comment'])){
           $the_post_id = $_GET['p_id'];
 
@@ -64,6 +64,12 @@
           if(!$create_comment_query){
             die('query failed' . mysqli_error($connection));
           }
+
+
+          // Increment post comment count by 1
+          $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = $the_post_id";
+
+          $update_comment_count = mysqli_query($connection,$query);
 
         }
 
@@ -119,7 +125,8 @@
 
           <!-- Single Comment -->
           <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <!-- avatar icon -->
+            <i class="fas fa-user-circle fa-3x d-flex mr-3 text-secondary"></i>
             <div class="media-body">
               <!-- comment author / date -->
               <h5 class="mt-0"><?php echo $comment_author ?> <small class="text-muted">on <?php echo $comment_date ?></small></h5>
