@@ -1,3 +1,5 @@
+/* ========== Global Styles ========== */
+
 p, a{
 	font-family: 'Open Sans', sans-serif;
 }
@@ -11,11 +13,13 @@ h1, h2, h3, h4, h5{
 	background-color: #ecf0f1 !important;
 }
 
+/* ========== Navigation ========== */
 
 .header-logo{
 	max-width: 200px;
 }
 
+/* ========== Search Bar ========== */
 
 .search-btn{
 	width: 100px !important;
