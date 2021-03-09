@@ -31,7 +31,7 @@
 
         <?php
 
-        $query = "SELECT * FROM posts";
+        $query = "SELECT * FROM posts WHERE post_status = 'published'";
         $select_all_posts_query = mysqli_query($connection, $query);
 
         while($row = mysqli_fetch_array($select_all_posts_query)){
@@ -43,6 +43,11 @@
             // Limit content lenght on homepage
             $post_content = substr($row['post_content'], 0,200);
             $post_comment_count = $row['post_comment_count'];
+            $post_status = $row['post_status'];
+
+            if($post_status !== 'published'){
+              // this code is further down the page
+            }else{
         ?>
         
         <!-- Card content -->
@@ -74,7 +79,14 @@
         </div>
         <!-- /card content -->
         <?php
+          }
         }
+
+        // If there are no posts set to publish this will display
+        if(mysqli_num_rows($select_all_posts_query) == 0){
+          echo "There are no posts!";
+          }
+
         ?>
 
 
