@@ -1,8 +1,10 @@
-
 /* ========== Main Styles ========== */
+
 #wrapper {
     overflow-x: hidden;
- }
+}
+
+/* ========== Navigation ========== */
 
 #sidebar-wrapper {
   min-height: 100vh;
