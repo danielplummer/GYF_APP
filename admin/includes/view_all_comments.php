@@ -1,3 +1,17 @@
+<?php
+// Delete Comment - Must be at top of this file to work
+if(isset($_GET['delete'])){
+  $the_comment_id = $_GET['delete'];
+
+  $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
+  $delete_query = mysqli_query($connection, $query);
+  // reload page after delete
+  header("Location: comments.php");
+}
+
+?>
+
+
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
@@ -58,17 +72,3 @@
   
   </tbody>
 </table>
-
-
-<?php
-// Delete Comment
-if(isset($_GET['delete'])){
-  $the_comment_id = $_GET['delete'];
-
-  $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
-  $delete_query = mysqli_query($connection, $query);
-  // reload page after delete - NOT WORKING
-  //header("Location: comments.php");
-}
-
-?>
