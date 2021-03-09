@@ -2,12 +2,12 @@
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Grow Young Fitness</div>
+    <div class="bg-dark" id="sidebar-wrapper">
+      <div class="sidebar-heading"><img src="img/lg-logo-white.png" class="img-fluid" width="175"></div>
       <div class="list-group list-group-flush">
-        <a href="index.php" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="posts.php" class="list-group-item list-group-item-action bg-light">Posts</a>
-        <a href="comments.php" class="list-group-item list-group-item-action bg-light">Comments</a>
+        <a href="index.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-tachometer-alt mr-3"></i>Dashboard</a>
+        <a href="posts.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-sticky-note mr-3"></i> Posts</a>
+        <a href="comments.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-comment-dots mr-3"></i>Comments</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -16,8 +16,9 @@
     <div id="page-content-wrapper">
 
       <!-- Top Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <!-- sidebar toggle -->
+        <button class="btn btn-light" id="menu-toggle"><i class="fas fa-ellipsis-h"></i></button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
