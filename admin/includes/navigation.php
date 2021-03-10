@@ -8,6 +8,7 @@
         <a href="index.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-tachometer-alt mr-3"></i>Dashboard</a>
         <a href="posts.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-sticky-note mr-3"></i> Posts</a>
         <a href="comments.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-comment-dots mr-3"></i>Comments</a>
+        <a href="users.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-user mr-3"></i>Users</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
