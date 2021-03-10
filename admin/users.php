@@ -8,7 +8,7 @@
 <!-- Main Admin Page Content -->
 <div class="container-fluid">
 	<h1 class="mt-4">All Users</h1>
-	<a href="users.php?source=add_user" class="btn btn-outline-primary add-post-btn my-4">Add User +</a>
+	<a href="users.php?source=add_user" class="btn btn-outline-primary add-user-btn my-4">Add User +</a>
 
 	<?php
 	// Switch Statement that displays posts
