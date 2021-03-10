@@ -23,6 +23,8 @@ if (isset($_POST['create_post'])) {
   $query .= "VALUES('{$post_title}', '{$post_author}', '{$post_status}', '{$post_tags}', '{$post_content}', now()) ";
 
   $create_post_query = mysqli_query($connection, $query);
+  // reload page after Submit
+  header("Location: posts.php");
 
 }
 
