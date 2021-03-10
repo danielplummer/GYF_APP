@@ -1,25 +1,25 @@
 <?php
   // Must be at top of this file for header() to work
 
-  // ========== Approve Comment ==========
-  if(isset($_GET['approve'])){
-    $the_comment_id = $_GET['approve'];
+  // ========== Change user role to Admin ==========
+  if(isset($_GET['change_to_admin'])){
+    $the_user_id = $_GET['change_to_admin'];
 
-    $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id";
-    $approve_comment_query = mysqli_query($connection, $query);
+    $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id";
+    $change_to_admin_query = mysqli_query($connection, $query);
     // reload page after click
-    header("Location: comments.php");
+    header("Location: users.php");
   }
 
 
-  // ========== Unapprove Comment ==========
-  if(isset($_GET['unapprove'])){
-    $the_comment_id = $_GET['unapprove'];
+  // ========== Change user role to Peasant ==========
+  if(isset($_GET['change_to_peasant'])){
+    $the_user_id = $_GET['change_to_peasant'];
 
-    $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id";
-    $unapprove_comment_query = mysqli_query($connection, $query);
+    $query = "UPDATE users SET user_role = 'peasant' WHERE user_id = $the_user_id";
+    $change_to_peasant_query = mysqli_query($connection, $query);
     // reload page after click
-    header("Location: comments.php");
+    header("Location: users.php");
   }
 
   // ========== Delete User ==========
@@ -71,8 +71,8 @@
 	     	echo "<td>$user_email</td>";
         echo "<td>$user_role</td>";
 
-        echo "<td class='text-center'><a href='#'>Approve</a></td>";
-        echo "<td class='text-center'><a href='#'>Unapprove</a></td>";
+        echo "<td class='text-center'><a href='users.php?change_to_admin={$user_id}'>Set role to Admin</a></td>";
+        echo "<td class='text-center'><a href='users.php?change_to_peasant={$user_id}'>Set role to Peasant</a></td>";
         echo "<td class='text-center'><a href='users.php?delete={$user_id}' class='text-danger'>Delete</a></td>";
      	echo "</tr>";
 
