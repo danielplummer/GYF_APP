@@ -1,7 +1,7 @@
 <?php
   // Must be at top of this file for header() to work
 
-  // ========== Approve Comment
+  // ========== Approve Comment ==========
   if(isset($_GET['approve'])){
     $the_comment_id = $_GET['approve'];
 
@@ -12,7 +12,7 @@
   }
 
 
-  // ========== Unapprove Comment
+  // ========== Unapprove Comment ==========
   if(isset($_GET['unapprove'])){
     $the_comment_id = $_GET['unapprove'];
 
@@ -22,14 +22,14 @@
     header("Location: comments.php");
   }
 
-  // ========== Delete Comment
+  // ========== Delete User ==========
   if(isset($_GET['delete'])){
-    $the_comment_id = $_GET['delete'];
+    $the_user_id = $_GET['delete'];
 
-    $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
-    $delete_query = mysqli_query($connection, $query);
+    $query = "DELETE FROM users WHERE user_id = {$the_user_id}";
+    $delete_user_query = mysqli_query($connection, $query);
     // reload page after delete
-    header("Location: comments.php");
+    header("Location: users.php");
   }
 
 ?>
@@ -73,7 +73,7 @@
 
         echo "<td class='text-center'><a href='#'>Approve</a></td>";
         echo "<td class='text-center'><a href='#'>Unapprove</a></td>";
-        echo "<td class='text-center'><a href='#' class='text-danger'>Delete</a></td>";
+        echo "<td class='text-center'><a href='users.php?delete={$user_id}' class='text-danger'>Delete</a></td>";
      	echo "</tr>";
 
     }
