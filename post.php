@@ -175,37 +175,32 @@
           </div>
         </div>
 
-        <!-- Categories Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
+        <!-- Top Posts Widget -->
+        <div class="card my-4 shadow-sm">
+          <h5 class="card-header">Top Posts</h5>
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Web Design</a>
+              
+              <div class="col-lg-12">
+                <ol class="mb-0 pl-3">
+                  <li class="py-1">
+                    <a href="#">Post Link Title</a>
                   </li>
-                  <li>
-                    <a href="#">HTML</a>
+                  <li class="py-1">
+                    <a href="#">Post Link</a>
                   </li>
-                  <li>
-                    <a href="#">Freebies</a>
+                  <li class="py-1">
+                    <a href="#">Post Link</a>
                   </li>
-                </ul>
+                  <li class="py-1">
+                    <a href="#">Post Link</a>
+                  </li>
+                  <li class="py-1">
+                    <a href="#">Post Link</a>
+                  </li>
+                </ol>
               </div>
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">JavaScript</a>
-                  </li>
-                  <li>
-                    <a href="#">CSS</a>
-                  </li>
-                  <li>
-                    <a href="#">Tutorials</a>
-                  </li>
-                </ul>
-              </div>
+
             </div>
           </div>
         </div>
