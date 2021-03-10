@@ -69,7 +69,8 @@
                 <!-- info -->
                 
                 <p class="card-text pt-3">
-                    <a href="#"><small><?php echo $post_comment_count ?> Comments</small></a> | 
+                    <!-- comment count -->
+                    <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $post_comment_count ?> Comments</small></a> | 
                     <small class="text-muted">Suggested on <?php echo $post_date ?> by <?php echo $post_author ?>.</small> 
                     <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
                 </p>
