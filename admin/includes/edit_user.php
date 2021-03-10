@@ -1,103 +1,116 @@
 <style>
   /* hide add post btn */
-  .add-post-btn{
+  .add-user-btn{
     display: none;
   }
 </style>
 
+
+
 <?php
 
-    if(isset($_GET['p_id'])) {
-      $the_post_id = $_GET['p_id'];
-    }
+if (isset($_GET['edit_user'])) {
+  $the_user_id = $_GET['edit_user'];
 
-    // Display post by post id
-    $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
-    $select_posts_by_id = mysqli_query($connection, $query);
+  // Display all users
+  $query = "SELECT * FROM users WHERE user_id = $the_user_id";
+  $select_users_query = mysqli_query($connection, $query);
 
-    while ($row = mysqli_fetch_assoc($select_posts_by_id)){
-      $post_id = $row['post_id'];
-      $post_author = $row['post_author'];
-      $post_title = $row['post_title'];
-      $post_status = $row['post_status'];
-      $post_tags = $row['post_tags'];
-      $post_content = $row['post_content'];
-      $post_comment_count = $row['post_comment_count'];
-      $post_date = $row['post_date'];
-    }
+  while ($row = mysqli_fetch_assoc($select_users_query)) {
+    $user_id = $row['user_id'];
+    $username = $row['username'];
+    $user_password = $row['user_password'];
+    $user_firstname = $row['user_firstname'];
+    $user_lastname = $row['user_lastname'];
+    $user_email = $row['user_email'];
+    $user_role = $row['user_role'];
+  }
+
+}
 
 
 
-    if(isset($_POST['update_post'])) {
-      $post_title = $_POST['post_title'];
-      $post_author = $_POST['post_author'];
-      $post_status = $_POST['post_status'];
-      $post_tags = $_POST['post_tags'];
-      $post_content = $_POST['post_content'];
+// Create User
+if (isset($_POST['edit_user'])) {
+  $user_firstname = $_POST['user_firstname'];
+  $user_lastname = $_POST['user_lastname'];
+  $username = $_POST['username'];
+  $user_email = $_POST['user_email'];
+  $user_password = $_POST['user_password'];
+  $user_role = $_POST['user_role'];
 
-      // Update Post Query
-      $query = "UPDATE posts SET ";
-      $query .="post_title = '{$post_title}', ";
-      $query .="post_author = '{$post_author}', ";
-      $query .="post_status = '{$post_status}', ";
-      $query .="post_tags = '{$post_tags}', ";
-      $query .="post_content = '{$post_content}', ";
-      $query .="post_date = now() ";
-      $query .= "WHERE post_id = {$the_post_id} ";
 
-      /* Update Post Query
-      $query = "UPDATE posts SET
-            post_title = '{$post_title}',
-            post_date = now(),
-            post_author = '{$post_author}',
-            post_status = '{$post_status}',
-            post_tags = '{$post_tags}',
-            post_content = '{$post_content}',
-            WHERE post_id = {$the_post_id} ";
-      */
 
-      $update_post = mysqli_query($connection,$query);
+  // Edit User Query
+  $query = "UPDATE users SET ";
+  $query .="user_firstname = '{$user_firstname}', ";
+  $query .="user_lastname = '{$user_lastname}', ";
+  $query .="username = '{$username}', ";
+  $query .="user_email = '{$user_email}', ";
+  $query .="user_password = '{$user_password}', ";
+  $query .="user_role = '{$user_role}' ";
+  $query .= "WHERE user_id = {$the_user_id} ";
 
-      if(!$update_post){
-        die("QUERY FAILED" . mysqli_error($connection));
-      }
-    }
+  $edit_user_query = mysqli_query($connection,$query);
+  header("Location: users.php");
+
+  /* check for error
+  if(!$edit_user_query){
+    die("QUERY FAILED" . mysqli_error($connection));
+  }
+  */
+
+}
 
 ?>
 
-<p>edit user page</p>
+<p>Edit user page</p>
 
 <div class="col-lg-6 mt-3">
   
   <form action="" method="post" enctype="multipart/form-data">
     
     <div class="form-group">
-      <label for="title">Post Title</label>
-      <input value="<?php echo $post_title; ?>" type="text" class="form-control" name="post_title">
+      <label for="firstname">First Name</label>
+      <input type="text" class="form-control" value="<?php echo $user_firstname ?>" name="user_firstname">
     </div>
 
     <div class="form-group">
-      <label for="author">Post Author</label>
-      <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="post_author">
+      <label for="lastname">Last Name</label>
+      <input type="text" class="form-control" value="<?php echo $user_lastname ?>" name="user_lastname">
     </div>
 
     <div class="form-group">
-      <label for="status">Post Status</label>
-      <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" value="<?php echo $username ?>" name="username">
     </div>
 
     <div class="form-group">
-      <label for="tags">Post Tags</label>
-      <input value="<?php echo $post_tags; ?>" type="text" class="form-control" name="post_tags">
+      <label for="tags">Email</label>
+      <input type="email" class="form-control" value="<?php echo $user_email ?>" name="user_email">
     </div>
-
 
     <div class="form-group">
-      <label for="content">Post Content</label>
-      <textarea class="form-control" rows="5" name="post_content"><?php echo $post_content; ?></textarea>
+      <label for="tags">Password</label>
+      <input type="password" class="form-control" value="<?php echo $user_password ?>" name="user_password">
     </div>
 
-    <button type="submit" name="update_post" class="btn btn-lg btn-primary">Update Post</button>
+    <div class="form-group w-50">
+      <label for="role">User Role</label>
+      <select type="text" class="form-control" name="user_role">
+        <option value="admin"><?php echo $user_role ?></option>
+        <?php
+          if ($user_role == 'admin') {
+            echo "<option value='peasant'>Peasant</option>";
+          }else{
+            echo "<option value='admin'>Admin</option>";
+          }
+        ?>
+      </select>
+    </div>
+
+    <!-- submit btn -->
+    <button type="submit" name="edit_user" class="btn btn-lg btn-primary mt-3">Update User</button>
 
   </form>
 
