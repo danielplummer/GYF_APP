@@ -25,3 +25,15 @@ h1, h2, h3, h4, h5{
 	width: 100px !important;
 	font-weight: bold;
 }
+
+
+/* ========== Login Page ========== */
+
+.login-body{
+	background: #343a40;
+	height: 100vh;
+}
+
+.login-card{
+	margin-top: 175px;
+}
