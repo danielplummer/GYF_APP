@@ -2,6 +2,17 @@
 <?php ob_start(); ?>
 <?php session_start(); ?>
 
+<?php
+
+// only allow "admin" users roles to access admin
+if(isset($_SESSION['user_role'])){
+  if($_SESSION['user_role'] !== 'admin'){
+    header("Location: ../index.php");
+  }
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
