@@ -39,20 +39,20 @@ if(isset($_POST['login'])){
 
   // ******** Need to change these index re-routes ********
 
-  if($user_email !== $db_user_email && $user_password !== $db_user_password){
-    header("Location: index.php");
-  }else if($user_email == $db_user_email && $user_password == $db_user_password){
+  if($user_email === $db_user_email && $user_password === $db_user_password){
     // set session
     $_SESSION['username'] = $db_username;
     $_SESSION['user_firstname'] = $db_user_firstname;
     $_SESSION['user_lastname'] = $db_user_lastname;
     $_SESSION['user_email'] = $db_user_email;
     $_SESSION['user_role'] = $db_user_role;
+
     header("Location: admin/");
+
   }else{
     header("Location: index.php");
   }
-
+  
 }
 
 ?>

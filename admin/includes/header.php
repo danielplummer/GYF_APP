@@ -4,11 +4,9 @@
 
 <?php
 
-// only allow "admin" users roles to access admin
-if(isset($_SESSION['user_role'])){
-  if($_SESSION['user_role'] !== 'admin'){
-    header("Location: ../index.php");
-  }
+// Restrict admin access if not logged in
+if(!isset($_SESSION['user_role'])){
+  header("Location: ../index.php");
 }
 
 ?>

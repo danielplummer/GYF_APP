@@ -39,7 +39,7 @@
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="fas fa-power-off"></i> Logout</a>
+                <a class="dropdown-item" href="includes/logout.php"><i class="fas fa-power-off"></i> Logout</a>
               </div>
             </li>
           </ul>
