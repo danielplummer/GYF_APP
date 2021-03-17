@@ -31,7 +31,32 @@
 
         <?php
 
-        $query = "SELECT * FROM posts WHERE post_status = 'published'";
+        // posts per page variable
+        $per_page = 3;
+
+        if(isset($_GET['page'])){
+          $page = $_GET['page'];
+        }else{
+          $page = "";
+        }
+
+        if($page == "" || $page == 1){
+          $page_1 = 0;
+        }else{
+          $page_1 = ($page * $per_page) - $per_page;
+        }
+
+
+        // Pagination Query
+        $post_query_count = "SELECT * FROM posts";
+        $find_count = mysqli_query($connection,$post_query_count);
+        $count = mysqli_num_rows($find_count);
+
+        $count = ceil($count / $per_page);
+
+
+        // Display posts query and pagination limit
+        $query = "SELECT * FROM posts WHERE post_status = 'published' LIMIT $page_1, $per_page";
         $select_all_posts_query = mysqli_query($connection, $query);
 
         while($row = mysqli_fetch_array($select_all_posts_query)){
@@ -84,6 +109,7 @@
         }
 
         // If there are no posts set to publish this will display
+        // Use an include here
         if(mysqli_num_rows($select_all_posts_query) == 0){
           echo "There are no posts!";
           }
@@ -95,7 +121,7 @@
 </section>
 
 
-<!-- Pagination -->
+<!-- Pagination
 <section class="my-5">
     <div class="container">
         <nav aria-label="Page navigation example">
@@ -113,6 +139,43 @@
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>
+          </ul>
+        </nav>
+    </div>
+</section>
+-->
+
+
+<!-- Pagination -->
+<section class="my-5">
+    <div class="container">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <!--
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          -->
+            <?php
+              # Loop through number of pages
+              for($i =1; $i <= $count; $i++){
+
+                if($i == $page){
+                  echo "<li class='page-item active'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
+                }else{
+                  echo "<li class='page-item'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
+                }
+              }
+            ?>
+            <!--
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            -->
           </ul>
         </nav>
     </div>
