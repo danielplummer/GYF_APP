@@ -81,9 +81,25 @@
       <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="post_author">
     </div>
 
+    <!--
     <div class="form-group">
       <label for="status">Post Status</label>
       <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status">
+    </div>
+    -->
+
+    <div class="form-group w-50">
+      <label for="role">Post Status</label>
+      <select type="text" class="form-control" name="post_status">
+        <option value="published"><?php echo $post_status ?></option>
+        <?php
+          if ($post_status == 'draft') {
+            echo "<option value='published'>Publish</option>";
+          }else{
+            echo "<option value='draft'>Draft</option>";
+          }
+        ?>
+      </select>
     </div>
 
     <div class="form-group">
