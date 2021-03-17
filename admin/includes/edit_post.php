@@ -91,7 +91,7 @@
     <div class="form-group w-50">
       <label for="role">Post Status</label>
       <select type="text" class="form-control" name="post_status">
-        <option value="published"><?php echo $post_status ?></option>
+        <option value="<?php echo $post_status ?>"><?php echo $post_status ?></option>
         <?php
           if ($post_status == 'draft') {
             echo "<option value='published'>Publish</option>";
