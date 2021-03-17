@@ -46,6 +46,30 @@
         <p class="lead py-2"><?php echo $post_content ?></p>
 
 
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header bg-light border-bottom-0">Leave a Comment:</h5>
+          <div class="card-body bg-light">
+            <form action="" method="post">
+
+              <div class="form-group w-50">
+                <input type="text" class="form-control" name="comment_author" placeholder="Name" required>
+              </div>
+
+              <div class="form-group w-50">
+                <input type="email" class="form-control" name="comment_email" placeholder="Email" required>
+                <p class="text-muted pl-2 pt-1"><small>We do not share your email.</small></p>
+              </div>
+
+              <div class="form-group">
+                <textarea class="form-control" name="comment_content" rows="3" placeholder="Leave a comment" required></textarea>
+              </div>
+
+              <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
+
+            </form>
+
         <?php
         // Insert comment query
         if(isset($_POST['create_comment'])){
@@ -61,9 +85,19 @@
 
           $create_comment_query = mysqli_query($connection, $query);
 
+          // Check for error
           if(!$create_comment_query){
             die('query failed' . mysqli_error($connection));
           }
+
+          // Comment success Message
+          echo '<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                  <h4 class="alert-heading">Comment Submitted!</h4>
+                  Once your comment is reviewed it will appear below.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>';
 
 
           // Increment post comment count by 1
@@ -72,33 +106,7 @@
           $update_comment_count = mysqli_query($connection,$query);
 
         }
-
-
         ?>
-
-
-        <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header bg-light border-bottom-0">Leave a Comment:</h5>
-          <div class="card-body bg-light">
-            <form action="" method="post">
-
-              <div class="form-group w-50">
-                <input type="text" class="form-control" name="comment_author" placeholder="Name">
-              </div>
-
-              <div class="form-group w-50">
-                <input type="email" class="form-control" name="comment_email" placeholder="Email">
-                <p class="text-muted pl-2 pt-1"><small>We do not share your email.</small></p>
-              </div>
-
-              <div class="form-group">
-                <textarea class="form-control" name="comment_content" rows="3" placeholder="Leave a comment"></textarea>
-              </div>
-
-              <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
-
-            </form>
 
           </div>
         </div>
@@ -123,7 +131,9 @@
           ?>
 
 
-          <!-- Single Comment -->
+          <h5 class="text-muted mb-4">Comments:</h5>
+
+          <!-- Comments -->
           <div class="media mb-4">
             <!-- avatar icon -->
             <i class="fas fa-user-circle fa-3x d-flex mr-3 text-secondary"></i>
