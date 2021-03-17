@@ -46,6 +46,7 @@ if(isset($_GET['delete'])){
       <th scope="col">Tags</th>
       <th scope="col">Comments</th>
       <th scope="col">Date</th>
+      <th scope="col">View Post</th>
       <th scope="col">Publish</th>
       <th scope="col">Unpublish</th>
     </tr>
@@ -75,6 +76,7 @@ if(isset($_GET['delete'])){
 	     	echo "<td>$post_tags</td>";
 	     	echo "<td>$post_comment_count</td>";
 	     	echo "<td>$post_date</td>";
+        echo "<td class='text-center'><a href='../post.php?p_id=$post_id'>View</a></td>";
         echo "<td class='text-center'><a href='posts.php?publish=$post_id'>Publish</a></td>";
         echo "<td class='text-center'><a href='posts.php?unpublish=$post_id'>Unpublish</a></td>";
         echo "<td class='text-center'><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
