@@ -25,8 +25,17 @@ if (isset($_POST['create_user'])) {
   $query .= "VALUES('{$user_firstname}', '{$user_lastname}', '{$username}', '{$user_email}', '{$user_password}', '{$user_role}') ";
 
   $create_user_query = mysqli_query($connection, $query);
+  
   // reload page after Submit
-  header("Location: users.php");
+  // header("Location: users.php");
+
+  // show success message
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  User Added Succesfully! <a href="users.php" class="alert-link">View All Users</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
 
   /* check for error
   if(!$create_user_query){
@@ -39,6 +48,7 @@ if (isset($_POST['create_user'])) {
 ?>
 
 <p>add user page</p>
+
 
 <div class="col-lg-6 mt-3">
   
