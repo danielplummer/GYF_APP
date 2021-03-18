@@ -20,7 +20,55 @@
 
 
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        let post_id = <?php echo $the_post_id; ?>
+
+        // Like Post
+        $('.like').click(function(){
+          $.ajax({
+            url: "post.php?p_id=<?php echo $the_post_id; ?>",
+            type: 'post',
+            data: {
+              'liked': 1,
+              'post_id': post_id
+            }
+          })
+        });
+
+        // Unlike Post
+        $('.unlike').click(function(){
+          $.ajax({
+            url: "post.php?p_id=<?php echo $the_post_id; ?>",
+            type: 'post',
+            data: {
+              'unliked': 1,
+              'post_id': post_id
+            }
+          })
+        });
+
+      });
+    </script>
+
+    <script>
+      // Toggle Like Btn
+      $(document).ready(function(){
+        $("#likeBtn").click(function(){
+          $("#likeBtn").toggleClass("d-none");
+          $("#unlikeBtn").toggleClass("d-none");
+        });
+        $("#unlikeBtn").click(function(){
+          $("#likeBtn").toggleClass("d-none");
+          $("#unlikeBtn").toggleClass("d-none");
+        });
+      });
+    </script>
+
+
   </body>
 </html>

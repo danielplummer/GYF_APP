@@ -8,6 +8,42 @@
 <!-- Navigation -->
 <?php include "includes/navigation.php" ?>
 
+<?php
+
+## Like Post
+if(isset($_POST['liked'])){
+  $post_id = $_POST['post_id'];
+  
+  # 1. fetch post id
+  $query = "SELECT * FROM posts WHERE post_id=$post_id";
+  $postResult = mysqli_query($connection,$query);
+  $post = mysqli_fetch_array($postResult);
+  $likes = $post['likes'];
+
+  # 2. update post with likes
+  mysqli_query($connection, "UPDATE posts SET likes=$likes+1 WHERE post_id=$post_id");
+}
+
+
+## unlike Post
+if(isset($_POST['unliked'])){
+  $post_id = $_POST['post_id'];
+  
+  # 1. fetch post id
+  $query = "SELECT * FROM posts WHERE post_id=$post_id";
+  $postResult = mysqli_query($connection,$query);
+  $post = mysqli_fetch_array($postResult);
+  $likes = $post['likes'];
+
+  # delete like
+  mysqli_query($connection, "DELETE FROM likes WHERE post_id=$post_id");
+
+  # 2. update post with likes
+  mysqli_query($connection, "UPDATE posts SET likes=$likes-1 WHERE post_id=$post_id");
+}
+
+?>
+
 <!-- Page Content -->
   <div class="container">
     <div class="row">
@@ -31,6 +67,7 @@
             $post_status_badge = $row['post_status_badge'];
             $post_content = $row['post_content'];
             $post_comment_count = $row['post_comment_count'];
+            $likes = $row['likes'];
 
         ?>
 
@@ -44,6 +81,18 @@
 
         <!-- Post Content -->
         <p class="lead py-2"><?php echo $post_content ?></p>
+
+        <!-- like btn -->
+        <button type="button" id="likeBtn" class="btn btn-outline-success btn-lg like">
+        <i class="far fa-thumbs-up"></i> Vote <span class="badge badge-dark"><?php echo $likes ?></span>
+        </button>
+
+        <!-- unlike btn -->
+        <button type="button" id="unlikeBtn" class="btn btn-success btn-lg d-none unlike">
+        <i class="far fa-thumbs-up"></i> Voted <span class="badge badge-dark"><?php echo $likes + 1 ?></span>
+        </button>
+
+
 
 
 
@@ -141,10 +190,9 @@
               <!-- comment author / date -->
               <h5 class="mt-0"><?php echo $comment_author ?> <small class="text-muted">on <?php echo $comment_date ?></small></h5>
               <!-- comment content -->
-              <p>
-                <?php echo $comment_content ?>
-              </p>
+              <p><?php echo $comment_content ?></p>
               <hr>
+
             </div>
           </div>
 
@@ -234,3 +282,5 @@
 
 <!-- Footer -->
 <?php include "includes/footer.php" ?>
+
+

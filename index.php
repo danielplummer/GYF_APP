@@ -69,6 +69,7 @@
             $post_content = substr($row['post_content'], 0,200);
             $post_comment_count = $row['post_comment_count'];
             $post_status = $row['post_status'];
+            $likes = $row['likes'];
 
             if($post_status !== 'published'){
               // this code is further down the page
@@ -80,8 +81,10 @@
           <div class="row no-gutters bg-light">
             <div class="col-md-2 align-self-center text-center">
                 <div class="py-3">
-                  <h2 class="p-2">12 votes</h2>
+                  <h2 class="p-2"><?php echo $likes ?> votes</h2>
+                  <!--
                   <button type="button" class="btn btn-outline-success"><i class="far fa-thumbs-up"></i> Vote</button>
+                  -->
               </div>
             </div>
             <div class="col-md-10">
