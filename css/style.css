@@ -13,6 +13,10 @@ h1, h2, h3, h4, h5{
 	background-color: #ecf0f1 !important;
 }
 
+.badge{
+	border-radius: 50px !important;
+}
+
 /* ========== Navigation ========== */
 
 .header-logo{
