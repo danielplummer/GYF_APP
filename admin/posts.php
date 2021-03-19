@@ -11,7 +11,7 @@
 	<a href="posts.php?source=add_post" class="btn btn-outline-primary add-post-btn my-4">Add Post +</a>
 
 	<?php
-	// Switch Statement that displays posts - views can be found in includes folder
+	// Switch Statement that displays posts
 
 	if (isset($_GET['source'])) {
 		$source = $_GET['source'];
