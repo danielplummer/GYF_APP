@@ -1,3 +1,25 @@
+<?php
+// Add a new post
+
+if (isset($_POST['create_post'])) {
+  $post_title = $_POST['post_title'];
+  $post_author = $_POST['post_author'];
+  $post_email = $_POST['post_email'];
+  $post_content = $_POST['post_content'];
+  $post_date = date('d-m-y');
+  //$post_comment_count = 4;
+
+  $query = "INSERT INTO posts(post_title, post_author, post_email, post_content, post_date)";
+
+  $query .= "VALUES('{$post_title}', '{$post_author}', '{$post_email}', '{$post_content}', now()) ";
+
+  $create_post_query = mysqli_query($connection, $query);
+  // reload page after Submit
+  header("Location: index.php");
+}
+
+?>
+
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
@@ -14,9 +36,57 @@
           <a class="nav-link" href="#"><span aria-hidden="true">&laquo;</span> Back to Library</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-plus"></i> Submit Your Idea</button>
-      </form>
+
+      <!-- ADD Post BTN -->
+      <button class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#postModal"><i class="fas fa-plus"></i> Submit Your Idea</button>
+      
     </div>
   </div>
 </nav>
+
+
+
+<!-- Add Post Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Submit Your Idea</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label for="author">Name</label>
+            <input type="text" class="form-control" name="post_author" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tags">Email</label>
+            <p class="text-muted" style="margin-top:-10px; margin-bottom:5px;"><small>We do not share your email.</small></p>
+            <input type="text" class="form-control" name="post_email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Suggestion Title</label>
+            <input type="text" class="form-control" name="post_title" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="content">Share Your Idea</label>
+            <textarea class="form-control" rows="8" name="post_content" required></textarea>
+          </div>
+
+          <button type="submit" name="create_post" class="btn btn-lg btn-primary">Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
