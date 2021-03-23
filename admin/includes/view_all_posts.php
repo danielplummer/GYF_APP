@@ -80,7 +80,8 @@ if(isset($_GET['delete'])){
         echo "<td class='text-center'><a href='posts.php?publish=$post_id'>Publish</a></td>";
         echo "<td class='text-center'><a href='posts.php?unpublish=$post_id'>Unpublish</a></td>";
         echo "<td class='text-center'><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-        echo "<td class='text-center'><a href='posts.php?delete={$post_id}' class='text-danger'>Delete</a></td>";
+        //echo "<td class='text-center'><a href='posts.php?delete={$post_id}' class='text-danger'>Delete</a></td>";
+        echo "<td class='text-center'><a rel='{$post_id}' href='javascript:void(0)' class='text-danger delete_post_link'>Delete</a></td>";
      	echo "</tr>";
 
     }
@@ -88,3 +89,6 @@ if(isset($_GET['delete'])){
   
   </tbody>
 </table>
+
+<!-- confirm Delete modal -->
+<?php include "delete_modal.php" ?>

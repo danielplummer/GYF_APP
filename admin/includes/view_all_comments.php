@@ -87,7 +87,8 @@
 	     	echo "<td>$comment_date</td>";
         echo "<td class='text-center'><a href='comments.php?approve=$comment_id'>Approve</a></td>";
         echo "<td class='text-center'><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
-        echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
+        //echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
+        echo "<td class='text-center'><a rel='{$comment_id}' href='javascript:void(0)' class='text-danger delete_comment_link'>Delete</a></td>";
      	echo "</tr>";
 
     }
@@ -102,3 +103,7 @@
   
   </tbody>
 </table>
+
+
+<!-- confirm delete modal -->
+<?php include "delete_modal.php" ?>
