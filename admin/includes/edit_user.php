@@ -30,7 +30,7 @@ if (isset($_GET['edit_user'])) {
 
 
 
-// Create User
+// Edit User
 if (isset($_POST['edit_user'])) {
   $user_firstname = $_POST['user_firstname'];
   $user_lastname = $_POST['user_lastname'];
@@ -40,6 +40,15 @@ if (isset($_POST['edit_user'])) {
   $user_role = $_POST['user_role'];
 
 
+  // Get encrypted password
+  $query = "SELECT randSalt FROM users";
+  $select_randsalt_query = mysqli_query($connection, $query);
+
+  $row = mysqli_fetch_array($select_randsalt_query);
+  $salt = $row['randSalt'];
+  $hashed_password = crypt($user_password, $salt);
+
+
 
   // Edit User Query
   $query = "UPDATE users SET ";
@@ -47,7 +56,7 @@ if (isset($_POST['edit_user'])) {
   $query .="user_lastname = '{$user_lastname}', ";
   $query .="username = '{$username}', ";
   $query .="user_email = '{$user_email}', ";
-  $query .="user_password = '{$user_password}', ";
+  $query .="user_password = '{$hashed_password}', ";
   $query .="user_role = '{$user_role}' ";
   $query .= "WHERE user_id = {$the_user_id} ";
 
