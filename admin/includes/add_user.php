@@ -17,6 +17,19 @@ if (isset($_POST['create_user'])) {
   $user_password = $_POST['user_password'];
   $user_role = $_POST['user_role'];
 
+  // Clean Form Data
+  $username = mysqli_real_escape_string($connection, $username);
+  $user_email = mysqli_real_escape_string($connection, $user_email);
+  $user_password = mysqli_real_escape_string($connection, $user_password);
+
+
+  $query = "SELECT randSalt FROM users";
+  $select_randsalt_query = mysqli_query($connection, $query);
+
+  $row = mysqli_fetch_array($select_randsalt_query);
+  $salt = $row['randSalt'];
+  $user_password = crypt($user_password, $salt);
+  
 
 
   // Add user query
@@ -37,11 +50,10 @@ if (isset($_POST['create_user'])) {
   </button>
 </div>';
 
-  /* check for error
+  /* check for error */
   if(!$create_user_query){
     die("QUERY FAILED" . mysqli_error($connection));
   }
-  */
 
 }
 

@@ -37,6 +37,9 @@ if(isset($_POST['login'])){
     $db_user_role = $row['user_role'];
   }
 
+  // Get encrypted password for login
+  $user_password = crypt($user_password, $db_user_password);
+
   // ******** Need to change these index re-routes ********
 
   if($user_email === $db_user_email && $user_password === $db_user_password){
