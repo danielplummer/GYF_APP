@@ -79,36 +79,6 @@
 </section>
 
 
-<section class="my-5">
-	<div class="container-fluid">
-		
-		<script type="text/javascript">
-		  google.charts.load('current', {'packages':['bar']});
-		  google.charts.setOnLoadCallback(drawChart);
-
-		  function drawChart() {
-		    var data = google.visualization.arrayToDataTable([
-		      ['Erase Me', 'Total', 'Published', 'Unpublished'],
-		      ['Posts', 1000, 400, 200],
-		      ['Comments', 1170, 460, 250]
-		    ]);
-
-		    var options = {
-		      chart: {
-		        title: 'This is not finished',
-		        subtitle: 'Need to enter dynamic data',
-		      }
-		    };
-
-		    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-		    chart.draw(data, google.charts.Bar.convertOptions(options));
-		  }
-		</script>
-		<!-- display chart -->
-    	<div id="columnchart_material" style="width: auto; height: 500px;"></div>
-	</div>
-</section>
 
 
 

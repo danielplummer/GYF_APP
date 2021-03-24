@@ -27,9 +27,6 @@ if(!isset($_SESSION['user_role'])){
     <!-- Main CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <!-- google charts script -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
     <title>GYF ADMIN</title>
   </head>
 
