@@ -38,6 +38,7 @@
           if (isset($_POST['submit'])) {
             
             $search = $_POST['search'];
+            $search = mysqli_real_escape_string($connection, $search);
 
             $query = "SELECT * FROM posts WHERE post_content LIKE '%$search%' ";
             $search_query = mysqli_query($connection, $query);

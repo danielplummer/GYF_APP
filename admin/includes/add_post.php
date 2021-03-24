@@ -18,6 +18,13 @@ if (isset($_POST['create_post'])) {
   $post_date = date('d-m-y');
   //$post_comment_count = 4;
 
+  // Clean Form Data
+  $post_title = mysqli_real_escape_string($connection, $post_title);
+  $post_author = mysqli_real_escape_string($connection, $post_author);
+  $post_status = mysqli_real_escape_string($connection, $post_status);
+  $post_tags = mysqli_real_escape_string($connection, $post_tags);
+  $post_content = mysqli_real_escape_string($connection, $post_contents);
+
   $query = "INSERT INTO posts(post_title, post_author, post_status, post_tags, post_content, post_date)";
 
   $query .= "VALUES('{$post_title}', '{$post_author}', '{$post_status}', '{$post_tags}', '{$post_content}', now()) ";

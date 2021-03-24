@@ -24,12 +24,19 @@
 
   // ========== Delete Comment
   if(isset($_GET['delete'])){
-    $the_comment_id = $_GET['delete'];
 
-    $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
-    $delete_query = mysqli_query($connection, $query);
-    // reload page after delete
-    header("Location: comments.php");
+    if(isset($_SESSION['user_role'])){
+
+      if($_SESSION['user_role'] == 'admin'){
+
+        $the_comment_id = mysqli_real_escape_string($connection, $_GET['delete']);
+
+        $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
+        $delete_query = mysqli_query($connection, $query);
+        // reload page after delete
+        header("Location: comments.php");
+      }
+    }
   }
 
 ?>

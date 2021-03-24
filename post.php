@@ -128,6 +128,10 @@ if(isset($_POST['unliked'])){
           $comment_email = $_POST['comment_email'];
           $comment_content = $_POST['comment_content'];
 
+          $comment_author = mysqli_real_escape_string($connection, $comment_author);
+          $comment_email = mysqli_real_escape_string($connection, $comment_email);
+          $comment_content = mysqli_real_escape_string($connection, $comment_content);
+
           $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
 
           $query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now())";
@@ -263,13 +267,6 @@ if(isset($_POST['unliked'])){
           </div>
         </div>
 
-        <!-- Side Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-          </div>
-        </div>
 
       </div>
 

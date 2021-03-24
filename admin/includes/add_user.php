@@ -21,6 +21,9 @@ if (isset($_POST['create_user'])) {
   $username = mysqli_real_escape_string($connection, $username);
   $user_email = mysqli_real_escape_string($connection, $user_email);
   $user_password = mysqli_real_escape_string($connection, $user_password);
+  $user_firstname = mysqli_real_escape_string($connection, $user_firstname);
+  $user_lastname = mysqli_real_escape_string($connection, $user_lastname);
+  $user_role = mysqli_real_escape_string($connection, $user_role);
 
 
   $query = "SELECT randSalt FROM users";

@@ -48,6 +48,12 @@ if (isset($_POST['edit_user'])) {
   $salt = $row['randSalt'];
   $hashed_password = crypt($user_password, $salt);
 
+  // Clean Form Data
+  $user_firstname = mysqli_real_escape_string($connection, $user_firstname);
+  $user_lastname = mysqli_real_escape_string($connection, $user_lastname);
+  $username = mysqli_real_escape_string($connection, $username);
+  $user_email = mysqli_real_escape_string($connection, $user_email);
+  $user_role = mysqli_real_escape_string($connection, $user_role);
 
 
   // Edit User Query

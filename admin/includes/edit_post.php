@@ -35,6 +35,13 @@
       $post_tags = $_POST['post_tags'];
       $post_content = $_POST['post_content'];
 
+      // Clean Form Data
+      $post_title = mysqli_real_escape_string($connection, $post_title);
+      $post_author = mysqli_real_escape_string($connection, $post_author);
+      $post_status = mysqli_real_escape_string($connection, $post_status);
+      $post_tags = mysqli_real_escape_string($connection, $post_tags);
+      $post_content = mysqli_real_escape_string($connection, $post_content);
+
       // Update Post Query
       $query = "UPDATE posts SET ";
       $query .="post_title = '{$post_title}', ";

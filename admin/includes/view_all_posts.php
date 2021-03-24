@@ -23,14 +23,21 @@
 
 
 
-// Delete post - Must be at top of this file to work
+// ========== Delete post - Must be at top of this file to work
 if(isset($_GET['delete'])){
-  $the_post_id = $_GET['delete'];
 
-  $query = "DELETE FROM posts WHERE post_id = {$the_post_id}";
-  $delete_query = mysqli_query($connection, $query);
-  // reload page after delete
-  header("Location: posts.php");
+  if(isset($_SESSION['user_role'])){
+
+    if($_SESSION['user_role'] == 'admin'){
+
+      $the_post_id = mysqli_real_escape_string($connection, $_GET['delete']);
+
+      $query = "DELETE FROM posts WHERE post_id = {$the_post_id}";
+      $delete_query = mysqli_query($connection, $query);
+      // reload page after delete
+      header("Location: posts.php");
+    }
+  }
 }
 
 ?>
