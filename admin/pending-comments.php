@@ -7,7 +7,7 @@
   	
 <!-- Main Admin Page Content -->
 <div class="container-fluid">
-	<h1 class="mt-4">All Comments</h1>
+	<h1 class="mt-4">Pending Comments</h1>
 
 	<?php
   // Must be at top of this file for header() to work
@@ -19,7 +19,7 @@
     $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id";
     $approve_comment_query = mysqli_query($connection, $query);
     // reload page after click
-    header("Location: comments.php");
+    header("Location: pending-comments.php");
   }
 
 
@@ -30,7 +30,7 @@
     $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id";
     $unapprove_comment_query = mysqli_query($connection, $query);
     // reload page after click
-    header("Location: comments.php");
+    header("Location: pending-comments.php");
   }
 
   // ========== Delete Comment
@@ -45,7 +45,7 @@
         $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
         $delete_query = mysqli_query($connection, $query);
         // reload page after delete
-        header("Location: comments.php");
+        header("Location: pending-comments.php");
       }
     }
   }
@@ -71,8 +71,8 @@
     
     <?php
 
-    // Display all comments
-    $query = "SELECT * FROM comments";
+    // Display all pending comments
+    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
     $select_comments = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($select_comments)) {
@@ -105,8 +105,8 @@
         }
 
 	     	echo "<td>$new_comment_date</td>";
-        echo "<td class='text-center'><a href='comments.php?approve=$comment_id'>Approve</a></td>";
-        echo "<td class='text-center'><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
+        echo "<td class='text-center'><a href='pending-comments.php?approve=$comment_id'>Approve</a></td>";
+        echo "<td class='text-center'><a href='pending-comments.php?unapprove=$comment_id'>Unapprove</a></td>";
         //echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
         echo "<td class='text-center'><a rel='{$comment_id}' href='javascript:void(0)' class='text-danger delete_comment_link'>Delete</a></td>";
      	echo "</tr>";

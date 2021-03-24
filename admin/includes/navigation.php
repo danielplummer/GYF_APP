@@ -6,9 +6,28 @@
       <div class="sidebar-heading"><img src="img/lg-logo-white.png" class="img-fluid" width="175"></div>
       <div class="list-group list-group-flush">
         <a href="index.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-tachometer-alt mr-3"></i>Dashboard</a>
-        <a href="posts.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-sticky-note mr-3"></i> Posts</a>
-        <a href="comments.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-comment-dots mr-3"></i>Comments</a>
-        <a href="users.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-user mr-3"></i>Users</a>
+        <!--<a href="posts.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-sticky-note mr-3"></i> Posts</a>-->
+        <!-- Posts Dropdown -->
+        <a href="#" data-toggle="collapse" data-target="#posts" class="collapsed list-group-item list-group-item-action bg-dark text-light">
+          <i class="fas fa-sticky-note mr-3"></i> Posts<i class="fas fa-chevron-down float-right mt-1"></i>
+        </a>
+        <ul class="sub-menu collapse" id="posts" style="list-style-type: none;">
+          <li class="py-2"><a href="posts.php" class="text-light">View All Posts</a></li>
+          <li class="py-2"><a href="pending-posts.php" class="text-light">View Pending Posts</a></li>
+        </ul>
+        <!--<a href="comments.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-comment-dots mr-3"></i>Comments</a>-->
+        <!-- Comments Dropdown -->
+        <a href="#" data-toggle="collapse" data-target="#comments" class="collapsed list-group-item list-group-item-action bg-dark text-light">
+          <i class="fas fa-comment-dots mr-3"></i>Comments<i class="fas fa-chevron-down float-right mt-1"></i>
+        </a>
+        <ul class="sub-menu collapse" id="comments" style="list-style-type: none;">
+          <li class="py-2"><a href="comments.php" class="text-light">View All Comments</a></li>
+          <li class="py-2"><a href="pending-comments.php" class="text-light">View Pending Comments</a></li>
+        </ul>
+        <a href="users.php" class="list-group-item list-group-item-action bg-dark text-light"><i class="fas fa-user mr-3"></i> Users</a>
+
+        
+
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
