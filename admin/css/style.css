@@ -32,6 +32,10 @@
   margin-left: 0;
 }
 
+.sub-menu{
+  background: #4f5358;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
