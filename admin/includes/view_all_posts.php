@@ -74,7 +74,14 @@ if(isset($_GET['delete'])){
 	     	echo "<td>$post_title</td>";
 	     	echo "<td>$post_status</td>";
 	     	echo "<td>$post_tags</td>";
-	     	echo "<td>$post_comment_count</td>";
+
+        $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+        $send_comment_count_query = mysqli_query($connection, $query);
+        $count_comments = mysqli_num_rows($send_comment_count_query);
+
+	     	echo "<td>$count_comments</td>";
+
+
 	     	echo "<td>$post_date</td>";
         echo "<td class='text-center'><a href='../post.php?p_id=$post_id'>View</a></td>";
         echo "<td class='text-center'><a href='posts.php?publish=$post_id'>Publish</a></td>";

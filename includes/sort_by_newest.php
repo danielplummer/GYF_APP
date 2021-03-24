@@ -57,7 +57,13 @@
             $post_status_badge = $row['post_status_badge'];
             // Limit content lenght on homepage
             $post_content = substr($row['post_content'], 0,200);
-            $post_comment_count = $row['post_comment_count'];
+            
+            // Get approved comments count from DB
+            $query = "SELECT * FROM comments WHERE comment_post_id = $post_id AND comment_status = 'approved' ";
+            $send_comment_count_query = mysqli_query($connection, $query);
+            // store in this variable
+            $count_comments = mysqli_num_rows($send_comment_count_query);
+
             $post_status = $row['post_status'];
             $likes = $row['likes'];
 
@@ -88,7 +94,7 @@
                 
                 <p class="card-text pt-3">
                     <!-- comment count -->
-                    <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $post_comment_count ?> Comments</small></a> | 
+                    <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $count_comments ?> Comments</small></a> | 
                     <small class="text-muted">Suggested on <?php echo $post_date ?> by <?php echo $post_author ?>.</small> 
                     <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
                 </p>

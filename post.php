@@ -149,10 +149,10 @@ if(isset($_POST['unliked'])){
                 </div>';
 
 
-          // Increment post comment count by 1
+          /* Increment post comment count by 1
           $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = $the_post_id";
-
           $update_comment_count = mysqli_query($connection,$query);
+          */
 
         }
         ?>
