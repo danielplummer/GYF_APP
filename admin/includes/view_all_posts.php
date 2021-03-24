@@ -67,6 +67,8 @@ if(isset($_GET['delete'])){
     	$post_tags = $row['post_tags'];
     	$post_comment_count = $row['post_comment_count'];
      	$post_date = $row['post_date'];
+      // Change date fortmat
+      $new_date = date("m-d-Y", strtotime($post_date));  
 
      	echo "<tr>";
 	     	echo "<td>$post_id</td>";
@@ -82,7 +84,7 @@ if(isset($_GET['delete'])){
 	     	echo "<td>$count_comments</td>";
 
 
-	     	echo "<td>$post_date</td>";
+	     	echo "<td>$new_date</td>";
         echo "<td class='text-center'><a href='../post.php?p_id=$post_id'>View</a></td>";
         echo "<td class='text-center'><a href='posts.php?publish=$post_id'>Publish</a></td>";
         echo "<td class='text-center'><a href='posts.php?unpublish=$post_id'>Unpublish</a></td>";

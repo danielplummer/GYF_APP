@@ -65,6 +65,8 @@
     	$comment_content = $row['comment_content'];
     	$comment_status = $row['comment_status'];
      	$comment_date = $row['comment_date'];
+      // Change date fortmat
+      $new_comment_date = date("m-d-Y", strtotime($comment_date)); 
 
      	echo "<tr>";
 	     	echo "<td>$comment_id</td>";
@@ -84,7 +86,7 @@
           echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
         }
 
-	     	echo "<td>$comment_date</td>";
+	     	echo "<td>$new_comment_date</td>";
         echo "<td class='text-center'><a href='comments.php?approve=$comment_id'>Approve</a></td>";
         echo "<td class='text-center'><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
         //echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
