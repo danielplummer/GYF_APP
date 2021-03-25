@@ -32,6 +32,10 @@
   margin-left: 0;
 }
 
+.navbar-nav .dropdown-menu{
+  position: absolute !important;
+}
+
 .sub-menu{
   background: #4f5358;
 }
