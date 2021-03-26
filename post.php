@@ -64,6 +64,8 @@ if(isset($_POST['unliked'])){
             $post_title = $row['post_title'];
             $post_author = $row['post_author'];
             $post_date = $row['post_date'];
+            // Change date fortmat
+            $new_date = date("m-d-Y", strtotime($post_date));
             $post_status_badge = $row['post_status_badge'];
             $post_content = $row['post_content'];
             $post_comment_count = $row['post_comment_count'];
@@ -75,7 +77,7 @@ if(isset($_POST['unliked'])){
         <h1 class="mt-4"><?php echo $post_title ?></h1>
         
         <!-- post author/date -->
-        <p class="text-muted">Posted by: <?php echo $post_author ?> on <?php echo $post_date ?> </p>
+        <p class="text-muted">Posted by: <?php echo $post_author ?> on <?php echo $new_date ?> </p>
 
         <hr>
 
@@ -164,6 +166,8 @@ if(isset($_POST['unliked'])){
           </div>
         </div>
 
+        <h3 class="mb-5 text-muted">Comments:</h3>
+
 
         <?php
 
@@ -178,13 +182,14 @@ if(isset($_POST['unliked'])){
 
         while ($row = mysqli_fetch_array($select_comment_query)) {
           $comment_date = $row['comment_date'];
+          // Change date fortmat
+          $new_comment_date = date("m-d-Y", strtotime($post_date));
           $comment_content = $row['comment_content'];
           $comment_author = $row['comment_author'];
 
           ?>
 
 
-          <h5 class="text-muted mb-4">Comments:</h5>
 
           <!-- Comments -->
           <div class="media mb-4">
@@ -192,7 +197,7 @@ if(isset($_POST['unliked'])){
             <i class="fas fa-user-circle fa-3x d-flex mr-3 text-secondary"></i>
             <div class="media-body">
               <!-- comment author / date -->
-              <h5 class="mt-0"><?php echo $comment_author ?> <small class="text-muted">on <?php echo $comment_date ?></small></h5>
+              <h5 class="mt-0"><?php echo $comment_author ?> <small class="text-muted">on <?php echo $new_comment_date ?></small></h5>
               <!-- comment content -->
               <p><?php echo $comment_content ?></p>
               <hr>
