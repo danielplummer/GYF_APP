@@ -5,8 +5,8 @@
 <?php include "includes/navigation.php"?>
 
 
-<section class="bg-light">
-	<div class="container text-center py-5">
+<section class="pt-5">
+	<div class="container text-center">
 		<h1>Main Dashboard <i class="fas fa-tachometer-alt"></i></h1>
 	</div>
 </section>

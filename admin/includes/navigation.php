@@ -34,7 +34,7 @@
     <div id="page-content-wrapper">
 
       <!-- Top Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-light border-bottom">
         <!-- sidebar toggle -->
         <button class="btn btn-light" id="menu-toggle"><i class="fas fa-bars"></i></button>
 
@@ -68,7 +68,7 @@
 
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user-cog"></i>
                 <?php echo $_SESSION['username'] ?>
               </a>
