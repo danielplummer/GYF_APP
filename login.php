@@ -1,8 +1,6 @@
-
-<!-- DB Connection -->
-<?php include "includes/db.php" ?>
-
 <?php session_start(); ?>
+<?php ob_start(); ?>
+<?php include "includes/db.php" ?>
 
 <!-- header -->
 <?php include "includes/header.php" ?>

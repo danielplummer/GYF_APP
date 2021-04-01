@@ -1,5 +1,3 @@
-
-<!-- DB Connection -->
 <?php include "includes/db.php" ?>
 
 <!-- header -->

@@ -63,7 +63,7 @@ if(isset($_GET['delete'])){
     <?php
 
     // Deisplay all posts
-    $query = "SELECT * FROM POSTS";
+    $query = "SELECT * FROM posts";
     $select_posts = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($select_posts)) {

@@ -1,4 +1,3 @@
-<!-- Header -->
 <?php include "includes/header.php"?>
 
 <!-- Navigation -->

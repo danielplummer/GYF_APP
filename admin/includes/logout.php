@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php ob_start(); ?>
 
 <?php
 // End user session
