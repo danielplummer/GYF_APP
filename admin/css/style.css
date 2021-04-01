@@ -54,3 +54,10 @@
     margin-left: -15rem;
   }
 }
+
+/* ========== Tables ========== */
+
+.badge-pill {
+    width: 100%;
+    padding: 10px;
+}

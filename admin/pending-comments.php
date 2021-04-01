@@ -62,8 +62,7 @@
       <th scope="col">Status</th>
       <th scope="col">In Response To</th>
       <th scope="col">Date</th>
-      <th scope="col">Approve</th>
-      <th scope="col">Unapprove</th>
+      <th colspan="2" scope="col" class="text-center">Update Status</th>
     </tr>
   </thead>
   <tbody>
@@ -90,7 +89,12 @@
 	     	echo "<td>$comment_author</td>";
 	     	echo "<td>$comment_content</td>";
 	     	echo "<td>$comment_email</td>";
-	     	echo "<td>$comment_status</td>";
+        if($comment_status == 'approved'){
+            echo "<td><span class='badge badge-pill badge-success'>$comment_status</span></td>";
+          }else{
+            echo "<td><span class='badge badge-pill badge-warning'>$comment_status</span></td>";
+          }
+	     	//echo "<td>$comment_status</td>";
 
         // display post title asscociated with the comment
         $query = "SELECT * FROM posts WHERE post_id = $comment_post_id";
@@ -104,10 +108,9 @@
         }
 
 	     	echo "<td>$new_comment_date</td>";
-        echo "<td class='text-center'><a href='pending-comments.php?approve=$comment_id'>Approve</a></td>";
-        echo "<td class='text-center'><a href='pending-comments.php?unapprove=$comment_id'>Unapprove</a></td>";
-        //echo "<td class='text-center'><a href='comments.php?delete=$comment_id' class='text-danger'>Delete</a></td>";
-        echo "<td class='text-center'><a rel='{$comment_id}' href='javascript:void(0)' class='text-danger delete_comment_link'>Delete</a></td>";
+        echo "<td class='text-center'><a href='pending-comments.php?approve=$comment_id' class='btn btn-success'>Approve</a></td>";
+        echo "<td class='text-center'><a href='pending-comments.php?unapprove=$comment_id' class='btn btn-warning'>Unapprove</a></td>";
+        echo "<td class='text-center'><a rel='{$comment_id}' href='javascript:void(0)' class='text-danger delete_comment_link'><i class='far fa-trash-alt'></i> Delete</a></td>";
      	echo "</tr>";
 
     }
