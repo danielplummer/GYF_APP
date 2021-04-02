@@ -1,7 +1,5 @@
-<?php include "includes/db.php" ?>
-
-<!-- header -->
 <?php include "includes/header.php" ?>
+<?php include "includes/db.php" ?>
 
 <!-- Navigation -->
 <?php include "includes/navigation.php" ?>
@@ -59,9 +57,11 @@ if(isset($_POST['unliked'])){
         $select_all_posts_query = mysqli_query($connection, $query);
 
         while($row = mysqli_fetch_array($select_all_posts_query)){
+            $post_id = $row['post_id'];
             $post_title = $row['post_title'];
             $post_author = $row['post_author'];
             $post_date = $row['post_date'];
+            $post_status = $row['post_status'];
             // Change date fortmat
             $new_date = date("m-d-Y", strtotime($post_date));
             $post_status_badge = $row['post_status_badge'];
@@ -70,6 +70,37 @@ if(isset($_POST['unliked'])){
             $likes = $row['likes'];
 
         ?>
+
+        <?php
+        // Show message for draft posts
+        if ($post_status !== "published") {
+          echo '<div class="alert alert-danger text-center py-3 h5" role="alert">
+                  This is a draft post and will not show to users.
+                </div>';
+        }
+        ?>
+
+
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mt-4">
+          <ol class="breadcrumb bg-white pl-0">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?php echo $post_title ?></li>
+          </ol>
+        </nav>
+
+
+        <!-- like btn -->
+        <button type="button" id="likeBtn" class="btn btn-outline-success btn-lg like">
+        <i class="far fa-thumbs-up"></i> Vote <span class="badge badge-dark"><?php echo $likes ?></span>
+        </button>
+
+        <!-- unlike btn -->
+        <button type="button" id="unlikeBtn" class="btn btn-success btn-lg d-none unlike">
+        <i class="far fa-thumbs-up"></i> Voted <span class="badge badge-dark"><?php echo $likes + 1 ?></span>
+        </button>
+
 
         <!-- post title -->
         <h1 class="mt-4"><?php echo $post_title ?></h1>
@@ -81,16 +112,6 @@ if(isset($_POST['unliked'])){
 
         <!-- Post Content -->
         <p class="lead py-2"><?php echo $post_content ?></p>
-
-        <!-- like btn -->
-        <button type="button" id="likeBtn" class="btn btn-outline-success btn-lg like">
-        <i class="far fa-thumbs-up"></i> Vote <span class="badge badge-dark"><?php echo $likes ?></span>
-        </button>
-
-        <!-- unlike btn -->
-        <button type="button" id="unlikeBtn" class="btn btn-success btn-lg d-none unlike">
-        <i class="far fa-thumbs-up"></i> Voted <span class="badge badge-dark"><?php echo $likes + 1 ?></span>
-        </button>
 
 
 
@@ -115,7 +136,7 @@ if(isset($_POST['unliked'])){
                 <textarea class="form-control" name="comment_content" rows="3" placeholder="Leave a comment" required></textarea>
               </div>
 
-              <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
+              <button type="submit" name="create_comment" class="btn btn-primary font-weight-bold">Submit Comment</button>
 
             </form>
 
@@ -164,7 +185,22 @@ if(isset($_POST['unliked'])){
           </div>
         </div>
 
-        <h3 class="mb-5 text-muted">Comments:</h3>
+        
+
+        <?php
+
+        // Get total number of comments for this post
+        $query = "SELECT * FROM comments WHERE comment_status = 'approved' AND comment_post_id = $post_id";
+        $send_comment_count_query = mysqli_query($connection, $query);
+        $count_comments = mysqli_num_rows($send_comment_count_query);
+
+        if ($count_comments == 0) {
+          echo '<p class="lead text-muted mb-5">Be the first to leave a comment!</p>';
+        }else{
+          echo '<h3 class="text-muted mb-4">Comments:</h3>';
+        }
+
+        ?>
 
 
         <?php
@@ -188,18 +224,18 @@ if(isset($_POST['unliked'])){
           ?>
 
 
-
           <!-- Comments -->
-          <div class="media mb-4">
-            <!-- avatar icon -->
-            <i class="fas fa-user-circle fa-3x d-flex mr-3 text-secondary"></i>
-            <div class="media-body">
-              <!-- comment author / date -->
-              <h5 class="mt-0"><?php echo $comment_author ?> <small class="text-muted">on <?php echo $new_comment_date ?></small></h5>
-              <!-- comment content -->
-              <p><?php echo $comment_content ?></p>
-              <hr>
+          <div class="card p-3 mb-3">
+            <div class="media pt-3">
+              <!-- avatar icon -->
+              <i class="fas fa-user-circle fa-3x d-flex mr-3" style="color:<?php printf( "#%06X\n", mt_rand( 0, 0xFFFFFF )); ?>;"></i>
+              <div class="media-body">
+                <!-- comment author / date -->
+                <h5><?php echo $comment_author ?> <small class="text-muted">on <?php echo $new_comment_date ?></small></h5>
+                <!-- comment content -->
+                <p><?php echo $comment_content ?></p>
 
+              </div>
             </div>
           </div>
 
@@ -207,6 +243,7 @@ if(isset($_POST['unliked'])){
 
 
         <?php
+        // end loop
         }
 
         ?>
@@ -225,7 +262,7 @@ if(isset($_POST['unliked'])){
       <div class="col-md-4">
 
         <!-- Search Widget -->
-        <div class="card my-4">
+        <div class="card my-5">
           <h5 class="card-header">Search Posts</h5>
           <div class="card-body">
             <!-- Search form -->

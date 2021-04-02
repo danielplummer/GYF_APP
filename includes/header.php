@@ -1,9 +1,14 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Feedback & Feature Requests | Grow Young Fitness</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,6 +24,5 @@
     <!-- custom styles -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Feature Requests | Grow Young Fitness</title>
   </head>
   <body class="d-flex flex-column min-vh-100">

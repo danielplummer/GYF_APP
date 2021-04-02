@@ -79,7 +79,7 @@
 		            	<h1><?php echo $pending_comment_count ?></h1>
 		        	</div>
 		            <div class="card-footer bg-success d-flex align-items-center justify-content-between">
-		                <a class="small text-white stretched-link" href="pending-comments.php">View Pending Comments</a>
+		                <a class="small text-white stretched-link" href="pending-comments.php">Manage Pending Comments</a>
 		                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
 		            </div>
 		        </div>

@@ -21,13 +21,20 @@ if (isset($_POST['create_post'])) {
 
   $create_post_query = mysqli_query($connection, $query);
   // reload page after Submit
-  header("Location: index.php");
+  //header("Location: index.php");
+  // show success message
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Suggestion Submitted Succesfully! We will review your submission shortly.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
 }
 
 ?>
 
 
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-white">
   <div class="container">
     <a class="navbar-brand pr-4" href="index.php">
       <img src="img/lg-logo-color.png" class="d-inline-block header-logo" alt="">
@@ -39,12 +46,12 @@ if (isset($_POST['create_post'])) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto font-weight-bold">
         <li class="nav-item">
-          <a class="nav-link" href="#"><span aria-hidden="true">&laquo;</span> Back to Library</a>
+          <a class="nav-link" href="https://members.growyoungfitness.com/library"><span aria-hidden="true">&laquo;</span> Back to Library</a>
         </li>
       </ul>
 
       <!-- ADD Post BTN -->
-      <button class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#postModal"><i class="fas fa-plus"></i> Submit Your Idea</button>
+      <button class="btn btn-success btn-lg my-2 my-sm-0 font-weight-bold" data-toggle="modal" data-target="#postModal"><i class="fas fa-plus"></i> Submit Your Idea</button>
       
     </div>
   </div>
@@ -55,7 +62,7 @@ if (isset($_POST['create_post'])) {
 <!-- Add Post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content bg-light">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Submit Your Idea</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,25 +73,25 @@ if (isset($_POST['create_post'])) {
         <form action="" method="post" enctype="multipart/form-data">
 
           <div class="form-group">
-            <label for="author">Name</label>
-            <input type="text" class="form-control" name="post_author" required>
+            <label for="author">Name *</label>
+            <input type="text" class="form-control" name="post_author" placeholder="Jane D." required>
           </div>
 
           <div class="form-group">
             <label for="tags">Email</label>
             <p class="text-muted" style="margin-top:-10px; margin-bottom:5px;"><small>We do not share your email.</small></p>
-            <input type="text" class="form-control" name="post_email" required>
+            <input type="text" class="form-control" name="post_email" placeholder="Example@gmail.com" required>
           </div>
 
           <div class="form-group">
-            <label for="title">Suggestion Title</label>
-            <input type="text" class="form-control" name="post_title" required>
+            <label for="title">Idea Title</label>
+            <input type="text" class="form-control" name="post_title" placeholder="Ex. Grow Young Community" required>
           </div>
 
 
           <div class="form-group">
-            <label for="content">Share Your Idea</label>
-            <textarea class="form-control" rows="8" name="post_content" required></textarea>
+            <label for="content">Share More Details</label>
+            <textarea class="form-control" rows="8" name="post_content" placeholder="Ex. A place where members can share their progress and..." required></textarea>
           </div>
 
           <button type="submit" name="create_post" class="btn btn-lg btn-primary">Submit</button>

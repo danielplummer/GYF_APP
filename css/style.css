@@ -13,14 +13,64 @@ h1, h2, h3, h4, h5{
 	background-color: #ecf0f1 !important;
 }
 
+.bg-primary{
+	background: #0079c1 !important;
+}
+
 .badge{
 	border-radius: 50px !important;
+}
+
+a{
+	color: #0079c1 !important;
+}
+
+.btn-primary{
+	background: #0079c1 !important;
+	color: white !important;
+	border: none !important;
+	transition: 0.25s ease all;
+}
+
+.btn-primary:hover{
+	background: #0079c1 !important;
+	color: white !important;
+	border: none !important;
+	filter: brightness(120%);
+}
+
+.btn-success{
+	background: #80ba56 !important;
+	border: none !important;
+	transition: 0.25s ease all;
+}
+
+.btn-success:hover{
+	background: #80ba56 !important;
+	border: none !important;
+	filter: brightness(110%);
+}
+
+.btn-outline-success{
+	color: #80ba56 !important;
+	border-color: #80ba56 !important;
+}
+
+.btn-outline-success:hover{
+	background: #80ba56 !important;
+	color: white !important;
+	border-color: #80ba56 !important;
 }
 
 /* ========== Navigation ========== */
 
 .header-logo{
 	max-width: 200px;
+}
+
+.navbar-light{
+	-webkit-box-shadow: 0 4px 20px 0 rgb(0 0 0 / 8%);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 8%);
 }
 
 /* ========== Search Bar ========== */
@@ -40,4 +90,19 @@ h1, h2, h3, h4, h5{
 
 .login-card{
 	margin-top: 175px;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+  opacity: 0.5 !important; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+  opacity: 0.5 !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  opacity: 0.5 !important;
 }

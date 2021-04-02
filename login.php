@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php ob_start(); ?>
 <?php include "includes/db.php" ?>
 
@@ -93,9 +92,6 @@ if(isset($_POST['login'])){
                     </form>
                     <!-- end form -->
 
-                </div>
-                <div class="card-footer border-top-0 bg-white text-center">
-                    <div class="small"><a href="#">Forgot Password?</a></div>
                 </div>
             </div>
         </div>

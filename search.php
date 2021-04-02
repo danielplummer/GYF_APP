@@ -1,30 +1,34 @@
+<?php include "includes/header.php" ?>
 <?php include "includes/db.php" ?>
 
-<!-- header -->
-<?php include "includes/header.php" ?>
 
 <!-- Navigation -->
 <?php include "includes/navigation.php" ?>
 
 <!-- page Content -->
-<div class="container text-center py-5">
-    <h1 class="">Suggestions For Grow Young Fitness</h1>
-    <!-- Search Bar -->
-    <div class="col-md-8 offset-md-2">
-        <form action="search.php" method="post">
-            <div class="input-group my-4">
-              <input type="text" name="search" class="form-control" placeholder="Search for...">
-              <span class="input-group-append">
-                <button class="btn btn-primary search-btn" name="submit" type="submit">Go!</button>
-              </span>
-            </div>
-        </form>
-    </div>
-</div>
+<section class="bg-grey mb-5">
+  <div class="container text-center py-5">
+      <h1 class="pb-3">Suggestions For Grow Young Fitness</h1>
+      <p class="lead text-muted">Have a great idea for something we can add or improve that will make your memberhsip with Grow Young Fitness that much better? Click the button to submit your idea</p>
+      <button class="btn btn-success btn-lg mb-3 font-weight-bold" data-toggle="modal" data-target="#postModal"><i class="fas fa-plus"></i> Submit Your Idea</button>
+      <p class="lead text-muted">or search for other peoples ideas.</p>
+      <!-- Search Bar -->
+      <div class="col-md-8 offset-md-2">
+          <form action="search.php" method="post">
+              <div class="input-group my-4">
+                <input type="text" name="search" class="form-control" placeholder="Search for...">
+                <span class="input-group-append">
+                  <button class="btn btn-primary search-btn" name="submit" type="submit">Go!</button>
+                </span>
+              </div>
+          </form>
+      </div>
+  </div>
+</section>
 
 
 <!-- feature request cards -->
-<section>
+<section class="mb-5">
     <div class="container">
     <h5 class="text-muted pb-3">Search results:</h5>
 
@@ -38,7 +42,7 @@
             $search = $_POST['search'];
             $search = mysqli_real_escape_string($connection, $search);
 
-            $query = "SELECT * FROM posts WHERE post_content LIKE '%$search%' ";
+            $query = "SELECT * FROM posts WHERE post_status = 'published' AND post_content LIKE '%$search%' ";
             $search_query = mysqli_query($connection, $query);
 
             if (!$search_query) {

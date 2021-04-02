@@ -1,19 +1,30 @@
-<footer class="py-5 bg-light">
+<footer class="py-5 bg-primary">
     <div class="container text-center">
-      <p>Copyright &copy; Grow Young Fitness 2021</p>
+      <img src="img/lg-logo-white.png" class="img-fluid mb-4" width="200">
+      <p class="text-white">Copyright &copy; Grow Young Fitness LLC. 2021</p>
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a class="nav-link" href="#">Privacy Policy</a>
+            <a class="nav-link text-white" href="https://www.growyoungfitness.com/pages/privacy-policy">Privacy Policy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Terms of Service</a>
+            <a class="nav-link text-white" href="https://www.growyoungfitness.com/pages/terms">Terms of Service</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin/">Admin</a>
+            <a class="nav-link text-white" href="https://www.growyoungfitness.com/pages/disclaimer">Disclaimer</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">Admin Login</a>
-          </li>
+          <?php
+
+          if(isset($_SESSION['user_role'])){
+            echo '<li class="nav-item">
+                    <a class="nav-link text-white" href="admin/">Admin</a>
+                  </li>';
+          }else{
+            echo '<li class="nav-item">
+                    <a class="nav-link text-white" href="login.php">Admin Login</a>
+                  </li>';
+          };
+
+          ?>
         </ul>
     </div>
   </footer>
@@ -67,7 +78,10 @@
           $("#unlikeBtn").toggleClass("d-none");
         });
       });
+
     </script>
+
+
 
 
   </body>
