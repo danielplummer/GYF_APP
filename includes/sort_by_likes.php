@@ -91,7 +91,7 @@
                 <!-- descritpion -->
                 <p class="card-text text-muted"><?php echo $post_content ?></p>
                 <!-- link to post -->
-                <a href="post.php?p_id=<?php echo $post_id; ?>" class="btn btn-primary btn-sm">Keep Reading <span aria-hidden="true">&raquo;</span></a>
+                <a href="post.php?p_id=<?php echo $post_id; ?>" class="btn btn-primary btn-sm">Keep Reading and Vote <span aria-hidden="true">&raquo;</span></a>
                 <!-- info -->
                 
                 <p class="card-text pt-3">
