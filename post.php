@@ -217,7 +217,7 @@ if(isset($_POST['unliked'])){
         while ($row = mysqli_fetch_array($select_comment_query)) {
           $comment_date = $row['comment_date'];
           // Change date fortmat
-          $new_comment_date = date("m-d-Y", strtotime($post_date));
+          $new_comment_date = date("m-d-Y", strtotime($comment_date));
           $comment_content = $row['comment_content'];
           $comment_author = $row['comment_author'];
 
