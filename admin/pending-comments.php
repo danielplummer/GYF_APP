@@ -70,7 +70,7 @@
     <?php
 
     // Display all pending comments
-    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
+    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ORDER BY comment_id DESC";
     $select_comments = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($select_comments)) {
