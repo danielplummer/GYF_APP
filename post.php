@@ -3,6 +3,7 @@
 
 <!-- Navigation -->
 <?php include "includes/navigation.php" ?>
+<?php include "includes/functions.php" ?>
 
 <?php
 
@@ -63,7 +64,7 @@ if(isset($_POST['unliked'])){
             $post_date = $row['post_date'];
             $post_status = $row['post_status'];
             // Change date fortmat
-            $new_date = date("m-d-Y", strtotime($post_date));
+            //$new_date = date("m-d-Y", strtotime($post_date));
             $post_status_badge = $row['post_status_badge'];
             $post_content = $row['post_content'];
             $post_comment_count = $row['post_comment_count'];
@@ -106,7 +107,7 @@ if(isset($_POST['unliked'])){
         <h1 class="mt-4"><?php echo $post_title ?></h1>
         
         <!-- post author/date -->
-        <p class="text-muted">Posted by: <?php echo $post_author ?> on <?php echo $new_date ?> </p>
+        <p class="text-muted">Suggested <?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</p>
 
         <hr>
 
@@ -119,8 +120,8 @@ if(isset($_POST['unliked'])){
 
         <!-- Comments Form -->
         <div class="card my-4">
-          <h5 class="card-header bg-light border-bottom-0">Leave a Comment:</h5>
-          <div class="card-body bg-light">
+          <h5 class="card-header bg-grey border-bottom-0">Leave a Comment:</h5>
+          <div class="card-body bg-grey">
             <form action="" method="post">
 
               <div class="form-group w-50">
@@ -217,7 +218,7 @@ if(isset($_POST['unliked'])){
         while ($row = mysqli_fetch_array($select_comment_query)) {
           $comment_date = $row['comment_date'];
           // Change date fortmat
-          $new_comment_date = date("m-d-Y", strtotime($comment_date));
+          //$new_comment_date = date("m-d-Y", strtotime($comment_date));
           $comment_content = $row['comment_content'];
           $comment_author = $row['comment_author'];
 
@@ -231,7 +232,7 @@ if(isset($_POST['unliked'])){
               <i class="fas fa-user-circle fa-3x d-flex mr-3" style="color:<?php printf( "#%06X\n", mt_rand( 0, 0xFFFFFF )); ?>;"></i>
               <div class="media-body">
                 <!-- comment author / date -->
-                <h5><?php echo $comment_author ?> <small class="text-muted">on <?php echo $new_comment_date ?></small></h5>
+                <h5><?php echo $comment_author ?> <small class="text-muted"> <?php echo time_elapsed_string($comment_date); ?></small></h5>
                 <!-- comment content -->
                 <p><?php echo $comment_content ?></p>
 

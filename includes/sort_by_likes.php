@@ -55,7 +55,7 @@
             $post_author = $row['post_author'];
             $post_date = $row['post_date'];
             // Change date fortmat
-            $new_date = date("m-d-Y", strtotime($post_date)); 
+            //$new_date = date("m-d-Y", strtotime($post_date)); 
             $post_status_badge = $row['post_status_badge'];
             // Limit content lenght on homepage
             $post_content = substr($row['post_content'], 0,200);
@@ -97,7 +97,7 @@
                 <p class="card-text pt-3">
                     <!-- comment count -->
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $count_comments ?> Comments</small></a> | 
-                    <small class="text-muted">Suggested on <?php echo $new_date ?> by <?php echo $post_author ?>.</small> 
+                    <small class="text-muted">Suggested <?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</small> 
                     <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
                 </p>
               </div>

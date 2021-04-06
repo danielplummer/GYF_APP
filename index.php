@@ -3,6 +3,7 @@
 
 <!-- Navigation -->
 <?php include "includes/navigation.php" ?>
+<?php include "includes/functions.php" ?>
 
 <!-- Homepage Content -->
 <section class="bg-grey mb-5">
