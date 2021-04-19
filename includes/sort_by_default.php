@@ -1,5 +1,5 @@
 <!-- working SORT Form / On Most Votes Page -->
-<section>
+<section class="sort">
   <div class="container">
     <form method="get">
       <div class="form-group w-50">
@@ -96,7 +96,7 @@
                 <p class="card-text pt-3">
                     <!-- comment count -->
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $count_comments ?> Comments</small></a> | 
-                    <small class="text-muted">Suggested <?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</small> 
+                    <small class="text-muted"><?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</small> 
                     <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
 
                     <br>
@@ -114,7 +114,22 @@
         // If there are no posts set to publish this will display
         // Use an include here
         if(mysqli_num_rows($select_all_posts_query) == 0){
-          echo "There are no posts!";
+          //echo "There are no posts!";
+            echo '
+                  <div class="text-center py-5">
+                    <h2>There Are No Posts Yet</h2>
+                    <p class="lead text-muted mb-5">Be the first to share your feedback!</p>
+                  </div>
+
+                  <style>
+                    .sort{
+                      display: none;
+                    }
+                    #pagination{
+                      display: none;
+                    }
+                  </style>
+                  ';
           }
 
         ?>
@@ -123,18 +138,14 @@
     </div>
 </section>
 
+
+
+
 <!-- Pagination -->
-<section class="my-5">
+<section class="my-5" id="pagination">
     <div class="container">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <!--
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-          -->
             <?php
               # Loop through number of pages
               for($i =1; $i <= $count; $i++){
@@ -146,13 +157,6 @@
                 }
               }
             ?>
-            <!--
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-            -->
           </ul>
         </nav>
     </div>

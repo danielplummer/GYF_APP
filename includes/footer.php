@@ -82,6 +82,11 @@
     </script>
 
 
+<script>
+// Show post success modal
+$('#success-modal').modal('show');
+</script>
+
 
 
   </body>

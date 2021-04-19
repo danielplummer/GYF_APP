@@ -22,16 +22,29 @@ if (isset($_POST['create_post'])) {
   $create_post_query = mysqli_query($connection, $query);
   // reload page after Submit
   //header("Location: index.php");
-  // show success message
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Suggestion Submitted Succesfully! We will review your submission shortly.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>';
+  // show success message Modal
+  echo '<div class="modal" id="success-modal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title text-success">Success!</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="lead text-muted">We have received your suggestion. Once it is reviewed, it will appear below for voting. Thank you for your feedback and always remember to Keep It Movin!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>';
 }
 
 ?>
+
 
 
 <nav class="navbar navbar-expand-md navbar-light bg-white">
@@ -73,7 +86,7 @@ if (isset($_POST['create_post'])) {
         <form action="" method="post" enctype="multipart/form-data">
 
           <div class="form-group">
-            <label for="author">Name *</label>
+            <label for="author">Name</label>
             <input type="text" class="form-control" name="post_author" placeholder="Jane D." required>
           </div>
 

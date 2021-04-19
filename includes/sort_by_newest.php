@@ -97,7 +97,7 @@
                 <p class="card-text pt-3">
                     <!-- comment count -->
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $count_comments ?> Comments</small></a> | 
-                    <small class="text-muted">Suggested <?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</small> 
+                    <small class="text-muted"><?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</small> 
                     <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
                 </p>
               </div>

@@ -8,8 +8,8 @@
 <!-- Homepage Content -->
 <section class="bg-grey mb-5">
   <div class="container text-center py-5">
-      <h1 class="pb-3">Suggestions For Grow Young Fitness</h1>
-      <p class="lead text-muted">Have a great idea for something we can add or improve that will make your memberhsip with Grow Young Fitness that much better? Click the button to submit your idea</p>
+      <h1 class="pb-3">Share Your Feedback & Recommend New Additions</h1>
+      <p class="lead text-muted">Have a great idea for something we can add to improve your Grow Young Fitness membership? Click the button to submit your idea.</p>
       <button class="btn btn-success btn-lg mb-3 font-weight-bold" data-toggle="modal" data-target="#postModal"><i class="fas fa-plus"></i> Submit Your Idea</button>
       <p class="lead text-muted">or search for other peoples ideas.</p>
       <!-- Search Bar -->

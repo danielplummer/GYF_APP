@@ -107,12 +107,12 @@ if(isset($_POST['unliked'])){
         <h1 class="mt-4"><?php echo $post_title ?></h1>
         
         <!-- post author/date -->
-        <p class="text-muted">Suggested <?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</p>
+        <p class="text-muted"><?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</p>
 
         <hr>
 
         <!-- Post Content -->
-        <p class="lead py-2"><?php echo $post_content ?></p>
+        <p class="lead py-4"><?php echo $post_content ?></p>
 
 
 
