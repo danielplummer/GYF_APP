@@ -118,7 +118,8 @@
             echo '
                   <div class="text-center py-5">
                     <h2>There Are No Posts Yet</h2>
-                    <p class="lead text-muted mb-5">Be the first to share your feedback!</p>
+                    <p class="lead text-muted mb-5">Be the first to share your feedback! Once a submission is reviewed it will show up here for people to comment and vote on.
+                    </p>
                   </div>
 
                   <style>
