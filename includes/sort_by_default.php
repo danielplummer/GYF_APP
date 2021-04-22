@@ -21,7 +21,7 @@
         <?php
 
         // posts per page variable
-        $per_page = 25;
+        $per_page = 15;
 
         if(isset($_GET['page'])){
           $page = $_GET['page'];

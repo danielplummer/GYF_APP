@@ -4,6 +4,7 @@
 
 <!-- Navigation -->
 <?php include "includes/navigation.php" ?>
+<?php include "includes/functions.php" ?>
 
 <!-- page Content -->
 <section class="bg-grey mb-5">
@@ -87,7 +88,7 @@
                       
                       <p class="card-text pt-3">
                           <a href="post.php?p_id=<?php echo $post_id; ?>"><small><?php echo $post_comment_count ?> Comments</small></a> | 
-                          <small class="text-muted">Suggested on <?php echo $post_date ?> by <?php echo $post_author ?>.</small> 
+                          <small class="text-muted"><?php echo time_elapsed_string($post_date); ?> by <?php echo $post_author ?>.</small>  
                           <span class="badge badge-warning float-right"><?php echo $post_status_badge ?></span>
                       </p>
                     </div>
