@@ -62,6 +62,13 @@ a{
 	border-color: #80ba56 !important;
 }
 
+/* pagination */
+.page-item.active .page-link {
+    color: #fff !important;
+    background-color: #0079c1;
+    border-color: #0079c1;
+}
+
 /* ========== Navigation ========== */
 
 .header-logo{

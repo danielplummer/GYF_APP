@@ -83,6 +83,7 @@ if (isset($_POST['create_post'])) {
         </button>
       </div>
       <div class="modal-body">
+        <p class="text-muted mb-4">*Before submitting your feedback/ideas, please search to see if a similar idea has been already been posted. <strong>If you have a question about your GYF membership,</strong> please email support@growyoungfitness.com for a faster response.</p>
         <form action="" method="post" enctype="multipart/form-data">
 
           <div class="form-group">
